@@ -1,0 +1,25 @@
+import React from "react";
+import { widgetRegistry } from "./widgets/registry"; 
+import type { WidgetId } from "./widgets/types";
+import { PeopleBaseWidget } from "./widgets/WidgetPeopleBase";
+
+interface WidgetRendererProps {
+  /*templateId: WidgetId;*/
+  data: any;
+}
+
+export const WidgetRenderer: React.FC<WidgetRendererProps> = ({
+  /*templateId,*/
+  data = null,
+}) => {
+  /*const Component = widgetRegistry[templateId];
+  if (!Component) {
+    return (
+      <div style={{ padding: 16, color: "red" }}>
+        Unknown widget: {templateId}
+      </div>
+    );
+  }*/
+
+  return <PeopleBaseWidget data={data} />/*<Component data={data} />*/;
+};
