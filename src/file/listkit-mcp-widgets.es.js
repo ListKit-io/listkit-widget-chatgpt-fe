@@ -21497,7 +21497,7 @@ const ik = ({
 }, oR = ({
   data: B = null
 }) => /* @__PURE__ */ Re.jsx(ik, { data: B });
-console.log("WIDGET BUILD 27-Nov-2025 33");
+console.log("WIDGET BUILD 27-Nov-2025 34");
 const lk = {
   applied_filters: {
     geo: "Italy",
