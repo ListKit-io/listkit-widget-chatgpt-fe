@@ -21505,7 +21505,7 @@ const ik = ({
     data: B
   }
 ));
-console.log("WIDGET BUILD 19-Nov-2025 2");
+console.log("WIDGET BUILD 27-Nov-2025 32");
 const lk = {
   applied_filters: {
     geo: "Italy",
