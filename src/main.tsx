@@ -4,12 +4,16 @@ console.log("WIDGET BUILD 19-Nov-2025 2");
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import { widgetRegistry } from "./widgets/registry";
 import type { WidgetId } from "./widgets/types";
 import { WidgetRenderer } from "./WidgetRenderer";
 
 const data = {
-  applied_filters: { geo: "Italy", q: "company zimbabve", country: ["italy"], jobTitle: ["founder", 'ceo'] },
+  applied_filters: {
+    geo: "Italy",
+    q: "company zimbabve",
+    country: ["italy"],
+    jobTitle: ["founder", "ceo"],
+  },
   result_count: 5,
   results: [
     {
@@ -65,7 +69,6 @@ const data = {
   error: null,
 };
 
-
 export function renderWidget(templateId: WidgetId, data: any = {}): void {
   //const Component = widgetRegistry[templateId];
   const rootEl = document.getElementById("root");
@@ -85,7 +88,7 @@ export function renderWidget(templateId: WidgetId, data: any = {}): void {
   root.render(
     <React.StrictMode>
       {/*<Component {...data} />*/}
-      <WidgetRenderer data={data} />
+      <WidgetRenderer templateId={templateId} data={data} />
     </React.StrictMode>
   );
 }

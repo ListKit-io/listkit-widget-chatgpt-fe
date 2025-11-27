@@ -1,15 +1,15 @@
 import React from "react";
-import { widgetRegistry } from "./widgets/registry"; 
+import { widgetRegistry } from "./widgets/registry";
 import type { WidgetId } from "./widgets/types";
 import { PeopleBaseWidget } from "./widgets/WidgetPeopleBase";
 
 interface WidgetRendererProps {
-  /*templateId: WidgetId;*/
+  templateId?: WidgetId | string;
   data: any;
 }
 
 export const WidgetRenderer: React.FC<WidgetRendererProps> = ({
-  /*templateId,*/
+  templateId = "",
   data = null,
 }) => {
   /*const Component = widgetRegistry[templateId];
@@ -21,5 +21,10 @@ export const WidgetRenderer: React.FC<WidgetRendererProps> = ({
     );
   }*/
 
-  return <PeopleBaseWidget data={data} />/*<Component data={data} />*/;
+  return (
+    <PeopleBaseWidget
+      templateId={templateId}
+      data={data}
+    /> /*<Component data={data} />*/
+  );
 };

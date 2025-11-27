@@ -1,31 +1,38 @@
 // src/widgets/WidgetPeopleBase.tsx
 import React from "react";
-import type { PeopleBase } from "./types";
+import type { PeopleBase, WidgetId } from "./types";
 import "./styles.css";
 
 interface PeopleBaseProps {
+  templateId?: WidgetId | string;
   data?: any;
 }
 
 export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
+  templateId = "",
   data = null,
 }) => {
-
-  const link = `http://app-dev.listkit.io/login?tokenAI=${data.token}&filterAI=${encodeURIComponent(JSON.stringify(data.applied_filters))}&pageAI=${data.page}`;
+  const link = `http://app-dev.listkit.io/login?tokenAI=${
+    data.token
+  }&filterAI=${encodeURIComponent(
+    JSON.stringify(data.applied_filters)
+  )}&pageAI=${data.page}`;
 
   return (
     <>
       {data?.results?.length > 0 ? (
         <div className="container">
           <div className="title-block">
-            <span className="title-block__text">{data?.title || "Saas founders list"}</span>
+            <span className="title-block__text">
+              {data?.title || "Saas founders list"}
+            </span>
             <a
               href={link}
               target="_blank"
               className="title-block__button"
               type="button"
             >
-              Open {data?.result_count ? data?.result_count : ''} results
+              Open {data?.result_count ? data?.result_count : ""} results
             </a>
           </div>
 
@@ -33,35 +40,37 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
             <table className="table">
               <thead>
                 <tr>
-                  <th className="table__th">
-                    <div className="table__flex">
-                      <svg
-                        className="min-w-14"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 14 14"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <circle
-                          cx="6.99984"
-                          cy="3.4974"
-                          r="2.33333"
-                          stroke="#0D2A4C"
-                          strokeWidth="0.875"
-                        />
-                        <ellipse
-                          cx="6.99984"
-                          cy="9.91927"
-                          rx="4.08333"
-                          ry="2.33333"
-                          stroke="#0D2A4C"
-                          strokeWidth="0.875"
-                        />
-                      </svg>
-                      Full name
-                    </div>
-                  </th>
+                  {templateId === "people-base" && (
+                    <th className="table__th">
+                      <div className="table__flex">
+                        <svg
+                          className="min-w-14"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 14 14"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <circle
+                            cx="6.99984"
+                            cy="3.4974"
+                            r="2.33333"
+                            stroke="#0D2A4C"
+                            strokeWidth="0.875"
+                          />
+                          <ellipse
+                            cx="6.99984"
+                            cy="9.91927"
+                            rx="4.08333"
+                            ry="2.33333"
+                            stroke="#0D2A4C"
+                            strokeWidth="0.875"
+                          />
+                        </svg>
+                        Full name
+                      </div>
+                    </th>
+                  )}
                   <th className="table__th">
                     <div className="table__flex">
                       <svg
@@ -127,48 +136,89 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
                       Company
                     </div>
                   </th>
-                  <th className="table__th">
-                    <div className="table__flex">
-                      <svg
-                        className="min-w-14"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 14 14"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M8.1665 3.5H5.83317C5.04224 3.5 4.3935 3.5 3.85517 3.53176C2.8962 3.58834 2.28763 3.74571 1.84992 4.18342C1.1665 4.86684 1.1665 5.96678 1.1665 8.16667C1.1665 10.3666 1.1665 11.4665 1.84992 12.1499C2.53334 12.8333 3.63328 12.8333 5.83317 12.8333H8.1665C10.3664 12.8333 11.4663 12.8333 12.1498 12.1499C12.8332 11.4665 12.8332 10.3666 12.8332 8.16667C12.8332 5.96678 12.8332 4.86684 12.1498 4.18342C11.712 3.74571 11.1035 3.58834 10.1445 3.53176C9.60618 3.5 8.95743 3.5 8.1665 3.5Z"
-                          stroke="#0D2A4C"
-                          strokeWidth="0.875"
-                        />
-                        <path
-                          d="M3.85547 3.53176C4.33581 3.51959 4.75956 3.18203 4.92301 2.73019C4.92804 2.71629 4.93319 2.70083 4.9435 2.6699L4.95847 2.625C4.98307 2.55117 4.99538 2.51425 5.00855 2.4815C5.17666 2.06332 5.57061 1.77938 6.02049 1.75213C6.05572 1.75 6.09464 1.75 6.17246 1.75H7.8278C7.90563 1.75 7.94454 1.75 7.97977 1.75213C8.42966 1.77938 8.8236 2.06332 8.99172 2.4815C9.00488 2.51425 9.01719 2.55117 9.0418 2.625L9.05677 2.6699C9.06706 2.70078 9.07223 2.7163 9.07726 2.73019C9.2407 3.18203 9.66445 3.51959 10.1448 3.53176"
-                          stroke="#0D2A4C"
-                          strokeWidth="0.875"
-                        />
-                        <path
-                          d="M12.6362 5.08594C10.8805 6.22717 10.0026 6.79778 9.07718 7.08532C7.72445 7.5056 6.27605 7.5056 4.92332 7.08532C3.99787 6.79778 3.12 6.22717 1.36426 5.08594"
-                          stroke="#0D2A4C"
-                          strokeWidth="0.875"
-                          strokeLinecap="round"
-                        />
-                        <path
-                          d="M4.6665 6.41406V7.58073"
-                          stroke="#0D2A4C"
-                          strokeWidth="0.875"
-                          strokeLinecap="round"
-                        />
-                        <path
-                          d="M9.3335 6.41406V7.58073"
-                          stroke="#0D2A4C"
-                          strokeWidth="0.875"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                      Job Title
-                    </div>
-                  </th>
+                  {templateId === "companies-base" && (
+                    <th className="table__th">
+                      <div className="table__flex">
+                        <svg
+                          className="min-w-14"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M2 6.66927C2 4.15511 2 2.89803 2.78105 2.11699C3.5621 1.33594 4.81918 1.33594 7.33333 1.33594H8.66667C11.1808 1.33594 12.4379 1.33594 13.219 2.11699C14 2.89803 14 4.15511 14 6.66927V9.33594C14 11.8501 14 13.1072 13.219 13.8882C12.4379 14.6693 11.1808 14.6693 8.66667 14.6693H7.33333C4.81918 14.6693 3.5621 14.6693 2.78105 13.8882C2 13.1072 2 11.8501 2 9.33594V6.66927Z"
+                            stroke="#0D2A4C"
+                            strokeWidth="0.875"
+                          />
+                          <path
+                            d="M5.33325 8H10.6666"
+                            stroke="#0D2A4C"
+                            strokeWidth="0.875"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M5.33325 5.33594H10.6666"
+                            stroke="#0D2A4C"
+                            strokeWidth="0.875"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M5.33325 10.6641H8.66659"
+                            stroke="#0D2A4C"
+                            strokeWidth="0.875"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                        Domain
+                      </div>
+                    </th>
+                  )}
+                  {templateId === "people-base" && (
+                    <th className="table__th">
+                      <div className="table__flex">
+                        <svg
+                          className="min-w-14"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 14 14"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M8.1665 3.5H5.83317C5.04224 3.5 4.3935 3.5 3.85517 3.53176C2.8962 3.58834 2.28763 3.74571 1.84992 4.18342C1.1665 4.86684 1.1665 5.96678 1.1665 8.16667C1.1665 10.3666 1.1665 11.4665 1.84992 12.1499C2.53334 12.8333 3.63328 12.8333 5.83317 12.8333H8.1665C10.3664 12.8333 11.4663 12.8333 12.1498 12.1499C12.8332 11.4665 12.8332 10.3666 12.8332 8.16667C12.8332 5.96678 12.8332 4.86684 12.1498 4.18342C11.712 3.74571 11.1035 3.58834 10.1445 3.53176C9.60618 3.5 8.95743 3.5 8.1665 3.5Z"
+                            stroke="#0D2A4C"
+                            strokeWidth="0.875"
+                          />
+                          <path
+                            d="M3.85547 3.53176C4.33581 3.51959 4.75956 3.18203 4.92301 2.73019C4.92804 2.71629 4.93319 2.70083 4.9435 2.6699L4.95847 2.625C4.98307 2.55117 4.99538 2.51425 5.00855 2.4815C5.17666 2.06332 5.57061 1.77938 6.02049 1.75213C6.05572 1.75 6.09464 1.75 6.17246 1.75H7.8278C7.90563 1.75 7.94454 1.75 7.97977 1.75213C8.42966 1.77938 8.8236 2.06332 8.99172 2.4815C9.00488 2.51425 9.01719 2.55117 9.0418 2.625L9.05677 2.6699C9.06706 2.70078 9.07223 2.7163 9.07726 2.73019C9.2407 3.18203 9.66445 3.51959 10.1448 3.53176"
+                            stroke="#0D2A4C"
+                            strokeWidth="0.875"
+                          />
+                          <path
+                            d="M12.6362 5.08594C10.8805 6.22717 10.0026 6.79778 9.07718 7.08532C7.72445 7.5056 6.27605 7.5056 4.92332 7.08532C3.99787 6.79778 3.12 6.22717 1.36426 5.08594"
+                            stroke="#0D2A4C"
+                            strokeWidth="0.875"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M4.6665 6.41406V7.58073"
+                            stroke="#0D2A4C"
+                            strokeWidth="0.875"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M9.3335 6.41406V7.58073"
+                            stroke="#0D2A4C"
+                            strokeWidth="0.875"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                        Job Title
+                      </div>
+                    </th>
+                  )}
                 </tr>
               </thead>
 
@@ -178,9 +228,13 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
                     className="table__tr"
                     key={item.id || item.companyId || idx}
                   >
-                    <td className="table__td">
-                      <div className="table__flex capitalize">{item.fullName || "N/A"}</div>
-                    </td>
+                    {templateId === "people-base" && (
+                      <td className="table__td">
+                        <div className="table__flex capitalize">
+                          {item.fullName || "N/A"}
+                        </div>
+                      </td>
+                    )}
                     <td className="table__td">
                       <div className="table__flex capitalize">
                         <div
@@ -190,20 +244,34 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
                           }}
                         >
                           {item.companyLogo && (
-                            <img width={16} height={16}
+                            <img
+                              width={16}
+                              height={16}
                               src={item.companyLogo}
                               alt={item.companyName}
                             />
                           )}
                         </div>
-                        <div>{item.companyName || "N/A"} <div className="table__line"></div></div>
+                        <div>
+                          {item.companyName || "N/A"}{" "}
+                          <div className="table__line"></div>
+                        </div>
                       </div>
                     </td>
-                    <td className="table__td">
-                      <div className="table__flex capitalize">
-                        {item.jobTitle}
-                      </div>
-                    </td>
+                    {templateId === "companies-base" && (
+                      <td className="table__td">
+                        <div className="table__flex capitalize">
+                          {item.companyDomain}
+                        </div>
+                      </td>
+                    )}
+                    {templateId === "people-base" && (
+                      <td className="table__td">
+                        <div className="table__flex capitalize">
+                          {item.jobTitle}
+                        </div>
+                      </td>
+                    )}
                   </tr>
                 ))}
               </tbody>
