@@ -9,7 +9,6 @@ interface PeopleBaseProps {
 }
 
 export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
-  templateId = "",
   data = null,
 }) => {
   const link = `http://app-dev.listkit.io/login?tokenAI=${
@@ -17,6 +16,8 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
   }&filterAI=${encodeURIComponent(
     JSON.stringify(data.applied_filters)
   )}&pageAI=${data.page}`;
+
+  const templateId = data.templateId || "";
 
   console.log("widget people", templateId);
 

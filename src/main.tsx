@@ -1,5 +1,5 @@
 // src/main.tsx
-console.log("WIDGET BUILD 27-Nov-2025 32");
+console.log("WIDGET BUILD 27-Nov-2025 33");
 
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -82,13 +82,11 @@ export function renderWidget(templateId = "", data: any = {}): void {
     return;
   }
 
-  console.log("Rendering widget:", templateId, data);
-
   const root = ReactDOM.createRoot(rootEl);
   root.render(
     <React.StrictMode>
       {/*<Component {...data} />*/}
-      <WidgetRenderer templateId={templateId} data={data} />
+      <WidgetRenderer data={data} />
     </React.StrictMode>
   );
 }

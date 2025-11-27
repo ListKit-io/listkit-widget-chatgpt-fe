@@ -9,7 +9,6 @@ interface WidgetRendererProps {
 }
 
 export const WidgetRenderer: React.FC<WidgetRendererProps> = ({
-  templateId = "",
   data = null,
 }) => {
   /*const Component = widgetRegistry[templateId];
@@ -21,12 +20,5 @@ export const WidgetRenderer: React.FC<WidgetRendererProps> = ({
     );
   }*/
 
-  console.log("widget templateId", templateId);
-
-  return (
-    <PeopleBaseWidget
-      templateId={templateId}
-      data={data}
-    /> /*<Component data={data} />*/
-  );
+  return <PeopleBaseWidget data={data} /> /*<Component data={data} />*/;
 };
