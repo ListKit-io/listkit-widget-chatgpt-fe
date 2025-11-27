@@ -18,14 +18,14 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
     JSON.stringify(data.applied_filters)
   )}&pageAI=${data.page}`;
 
+  console.log("widget people", templateId);
+
   return (
     <>
       {data?.results?.length > 0 ? (
         <div className="container">
           <div className="title-block">
-            <span className="title-block__text">
-              {data?.title || "Saas founders list"}
-            </span>
+            <span className="title-block__text">{data?.title || ""}</span>
             <a
               href={link}
               target="_blank"

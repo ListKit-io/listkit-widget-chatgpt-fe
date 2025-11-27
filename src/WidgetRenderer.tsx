@@ -21,6 +21,8 @@ export const WidgetRenderer: React.FC<WidgetRendererProps> = ({
     );
   }*/
 
+  console.log("widget templateId", templateId);
+
   return (
     <PeopleBaseWidget
       templateId={templateId}

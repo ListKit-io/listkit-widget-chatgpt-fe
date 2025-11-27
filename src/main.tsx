@@ -69,7 +69,7 @@ const data = {
   error: null,
 };
 
-export function renderWidget(templateId: WidgetId, data: any = {}): void {
+export function renderWidget(templateId = "", data: any = {}): void {
   //const Component = widgetRegistry[templateId];
   const rootEl = document.getElementById("root");
 
