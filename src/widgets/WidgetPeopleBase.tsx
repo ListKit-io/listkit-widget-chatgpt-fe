@@ -11,11 +11,20 @@ interface PeopleBaseProps {
 export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
   data = null,
 }) => {
-  const link = `http://app-dev.listkit.io/login?tokenAI=${
+  /*const link = `http://app-dev.listkit.io/login?tokenAI=${
     data.token
   }&filterAI=${encodeURIComponent(
     JSON.stringify(data.applied_filters)
-  )}&pageAI=${data.page}`;
+  )}&pageAI=${data.page}`;*/
+  const auth0Url = data?.login_link || "";
+  const innerUrl =
+    `http://app-dev.listkit.io/login?tokenAI=${encodeURIComponent(
+      data.token
+    )}` +
+    `&filterAI=${encodeURIComponent(JSON.stringify(data.applied_filters))}` +
+    `&pageAI=${encodeURIComponent(data.page)}`;
+
+  const link = `${auth0Url}&login_link=${encodeURIComponent(innerUrl)}`;
 
   const templateId = data.templateId || "";
 
