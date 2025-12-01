@@ -54,6 +54,7 @@ a {
 }
 
 .no-data {
+  background-color: #fff;
   text-align: center;
   padding: 16px;
 }
