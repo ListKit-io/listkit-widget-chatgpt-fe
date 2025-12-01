@@ -1,5 +1,5 @@
 // src/main.tsx
-console.log("WIDGET BUILD 27-Nov-2025 34");
+console.log("WIDGET BUILD 01-12-2025 34");
 
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -69,23 +69,22 @@ const data = {
   error: null,
 };
 
+let reactRoot: ReactDOM.Root | null = null;
+
 export function renderWidget(templateId = "", data: any = {}): void {
-  //const Component = widgetRegistry[templateId];
   const rootEl = document.getElementById("root");
 
-  if (!rootEl /*|| !Component*/) {
-    console.error("renderWidget: missing root or component", {
-      templateId,
-      hasRoot: !!rootEl,
-      //hasComponent: !!Component,
-    });
+  if (!rootEl) {
+    console.error("renderWidget: missing root", { templateId });
     return;
   }
 
-  const root = ReactDOM.createRoot(rootEl);
-  root.render(
+  if (!reactRoot) {
+    reactRoot = ReactDOM.createRoot(rootEl);
+  }
+
+  reactRoot.render(
     <React.StrictMode>
-      {/*<Component {...data} />*/}
       <WidgetRenderer data={data} />
     </React.StrictMode>
   );
