@@ -11,7 +11,7 @@ interface PeopleBaseProps {
 export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
   data = null,
 }) => {
-  const link = `http://app-dev.listkit.io/signup?plan=universalAccessFree&prompt=${data.title || ''}&tokenAI=${
+  const link = `https://next-dev.listkit.io/signup?plan=universalAccessFree&prompt=${data.title || ''}&tokenAI=${
     data.token
   }&filterAI=${encodeURIComponent(
     JSON.stringify(data.applied_filters || '')

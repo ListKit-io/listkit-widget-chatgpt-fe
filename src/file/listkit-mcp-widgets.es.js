@@ -21190,7 +21190,7 @@ const lk = ({
   data: B = null
 }) => {
   var jt;
-  const K = `http://app-dev.listkit.io/signup?plan=universalAccessFree&prompt=${B.title || ""}&tokenAI=${B.token}&filterAI=${encodeURIComponent(
+  const K = `https://next-dev.listkit.io/signup?plan=universalAccessFree&prompt=${B.title || ""}&tokenAI=${B.token}&filterAI=${encodeURIComponent(
     JSON.stringify(B.applied_filters || "")
   )}&pageAI=${B.page || ""}`, A = B.templateId || "";
   return console.log("widget people", A), /* @__PURE__ */ Re.jsx(Re.Fragment, { children: ((jt = B == null ? void 0 : B.results) == null ? void 0 : jt.length) > 0 ? /* @__PURE__ */ Re.jsxs("div", { className: "container", children: [
