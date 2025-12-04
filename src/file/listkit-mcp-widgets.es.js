@@ -1,4 +1,4 @@
-(function(){"use strict";try{if(typeof document<"u"){var e=document.createElement("style");e.appendChild(document.createTextNode("a{text-decoration:none}.min-w-14{min-width:14px}.container{margin:0;border-radius:10px;border:1px solid #e2e4e9;color:#0d2a4c;background-color:#fff}.title-block{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:6px 16px;border-bottom:1px solid #e2e4e9}.title-block__text{font-size:16px;font-style:normal;font-weight:500;line-height:20px;letter-spacing:-.4px}.title-block__button{font-family:inherit;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:#288dff;box-shadow:0 1px 2px #0e121b3d,0 0 0 1px #288dff;color:#fff;font-size:14px;font-style:normal;font-weight:600;line-height:16px;letter-spacing:-.4px;padding:7px 14px;transition:all .3s ease}.title-block__button:hover{background:#0f75ff;box-shadow:0 4px 8px #0e121b3d,0 0 0 1px #0f75ff}.no-data{background-color:#fff;text-align:center;padding:16px}.overflow{overflow:auto}.table{width:100%;min-width:500px;border-collapse:collapse}.table__th{padding:6px 16px;text-align:left;font-size:14px;font-weight:500;line-height:20px;letter-spacing:-.4px;background-color:#f9fafb}.table__td{padding:6px 16px;font-size:14px;font-weight:500;line-height:20px;letter-spacing:-.4px}.table__flex{display:flex;gap:8px;align-items:center}.table__badge{padding:1px 5px;border:1px solid #dbeafe;border-radius:6px;background:#eff6ff;font-size:12px;font-weight:500;line-height:18px;letter-spacing:-.01em;color:#288dff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-transform:capitalize}.table__tr{border-top:1px solid #ebecf0}.table__line{height:1px;background-color:#eeeff2}.table__img-circle{width:16px;height:16px;min-width:16px;border-radius:50%;overflow:hidden}.capitalize{text-transform:capitalize}")),document.head.appendChild(e)}}catch(t){console.error("vite-plugin-css-injected-by-js",t)}})();
+(function(){"use strict";try{if(typeof document<"u"){var e=document.createElement("style");e.appendChild(document.createTextNode("a{text-decoration:none}.min-w-14{min-width:14px}.container{margin:0;border-radius:10px;border:1px solid #e2e4e9;color:#0d2a4c;background-color:#fff}.title-block{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:6px 16px;border-bottom:1px solid #e2e4e9}.title-block__text{font-size:16px;font-style:normal;font-weight:500;line-height:20px;letter-spacing:-.4px}.title-block__button{font-family:inherit;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:#288dff;box-shadow:0 1px 2px #0e121b3d,0 0 0 1px #288dff;color:#fff;font-size:14px;font-style:normal;font-weight:600;line-height:16px;letter-spacing:-.4px;padding:7px 14px;transition:all .3s ease}.title-block__button:hover{background:#0f75ff;box-shadow:0 4px 8px #0e121b3d,0 0 0 1px #0f75ff}.no-data{border-top:1px solid #ebecf0;text-align:center;padding:16px;font-weight:700}.overflow{overflow:auto}.table{width:100%;min-width:500px;border-collapse:collapse}.table__th{padding:6px 16px;text-align:left;font-size:14px;font-weight:500;line-height:20px;letter-spacing:-.4px;background-color:#f9fafb}.table__td{padding:6px 16px;font-size:14px;font-weight:500;line-height:20px;letter-spacing:-.4px}.table__flex{display:flex;gap:8px;align-items:center}.table__badge{padding:1px 5px;border:1px solid #dbeafe;border-radius:6px;background:#eff6ff;font-size:12px;font-weight:500;line-height:18px;letter-spacing:-.01em;color:#288dff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-transform:capitalize}.table__tr{border-top:1px solid #ebecf0}.table__line{height:1px;background-color:#eeeff2}.table__img-circle{width:16px;height:16px;min-width:16px;border-radius:50%;overflow:hidden}.capitalize{text-transform:capitalize}")),document.head.appendChild(e)}}catch(t){console.error("vite-plugin-css-injected-by-js",t)}})();
 function X_(B) {
   return B && B.__esModule && Object.prototype.hasOwnProperty.call(B, "default") ? B.default : B;
 }
@@ -21193,7 +21193,7 @@ const lk = ({
   const K = `https://next-dev.listkit.io/signup?plan=universalAccessFree&prompt=${B.title || ""}&tokenAI=${B.token}&filterAI=${encodeURIComponent(
     JSON.stringify(B.applied_filters || "")
   )}&pageAI=${B.page || ""}&templateId=${B.templateId || ""}`, z = B.templateId || "";
-  return console.log("widget people", z), /* @__PURE__ */ se.jsx(se.Fragment, { children: ((jt = B == null ? void 0 : B.results) == null ? void 0 : jt.length) > 0 ? /* @__PURE__ */ se.jsxs("div", { className: "container", children: [
+  return console.log("widget people", z), /* @__PURE__ */ se.jsx(se.Fragment, { children: /* @__PURE__ */ se.jsxs("div", { className: "container", children: [
     /* @__PURE__ */ se.jsxs("div", { className: "title-block", children: [
       /* @__PURE__ */ se.jsx("span", { className: "title-block__text", children: (B == null ? void 0 : B.title) || "" }),
       /* @__PURE__ */ se.jsxs(
@@ -21205,359 +21205,361 @@ const lk = ({
           type: "button",
           children: [
             "Open ",
-            B != null && B.result_count ? B == null ? void 0 : B.result_count : "",
-            " results"
+            ((jt = B == null ? void 0 : B.results) == null ? void 0 : jt.length) > 0 ? `${B != null && B.result_count ? B == null ? void 0 : B.result_count : ""} results` : " web"
           ]
         }
       )
     ] }),
-    /* @__PURE__ */ se.jsx("div", { className: "overflow", children: /* @__PURE__ */ se.jsxs("table", { className: "table", children: [
-      /* @__PURE__ */ se.jsx("thead", { children: /* @__PURE__ */ se.jsxs("tr", { children: [
-        z === "people-base" && /* @__PURE__ */ se.jsx("th", { className: "table__th", children: /* @__PURE__ */ se.jsxs("div", { className: "table__flex", children: [
-          /* @__PURE__ */ se.jsxs(
-            "svg",
-            {
-              className: "min-w-14",
-              width: "14",
-              height: "14",
-              viewBox: "0 0 14 14",
-              fill: "none",
-              xmlns: "http://www.w3.org/2000/svg",
-              children: [
-                /* @__PURE__ */ se.jsx(
-                  "circle",
-                  {
-                    cx: "6.99984",
-                    cy: "3.4974",
-                    r: "2.33333",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875"
-                  }
-                ),
-                /* @__PURE__ */ se.jsx(
-                  "ellipse",
-                  {
-                    cx: "6.99984",
-                    cy: "9.91927",
-                    rx: "4.08333",
-                    ry: "2.33333",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875"
-                  }
-                )
-              ]
-            }
-          ),
-          "Full name"
-        ] }) }),
-        /* @__PURE__ */ se.jsx("th", { className: "table__th", children: /* @__PURE__ */ se.jsxs("div", { className: "table__flex", children: [
-          /* @__PURE__ */ se.jsxs(
-            "svg",
-            {
-              className: "min-w-14",
-              width: "14",
-              height: "14",
-              viewBox: "0 0 14 14",
-              fill: "none",
-              xmlns: "http://www.w3.org/2000/svg",
-              children: [
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M12.8332 12.8359L1.1665 12.8359",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875",
-                    strokeLinecap: "round"
-                  }
-                ),
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M9.91683 12.8307V3.4974C9.91683 2.39745 9.91683 1.84748 9.57512 1.50577C9.23341 1.16406 8.68344 1.16406 7.5835 1.16406H6.41683C5.31689 1.16406 4.76691 1.16406 4.4252 1.50577C4.0835 1.84748 4.0835 2.39745 4.0835 3.4974V12.8307",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875"
-                  }
-                ),
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M12.2502 12.8307V6.70573C12.2502 5.88646 12.2502 5.47682 12.0535 5.18256C11.9684 5.05518 11.859 4.9458 11.7317 4.86068C11.4374 4.66406 11.0278 4.66406 10.2085 4.66406",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875"
-                  }
-                ),
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M1.75 12.8307V6.70573C1.75 5.88646 1.75 5.47682 1.94662 5.18256C2.03174 5.05518 2.14111 4.9458 2.2685 4.86068C2.56276 4.66406 2.9724 4.66406 3.79167 4.66406",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875"
-                  }
-                ),
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M7 12.8359V11.0859",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875",
-                    strokeLinecap: "round"
-                  }
-                ),
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M5.8335 2.91406H8.16683",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875",
-                    strokeLinecap: "round"
-                  }
-                ),
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M5.8335 4.66406H8.16683",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875",
-                    strokeLinecap: "round"
-                  }
-                ),
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M5.8335 6.41406H8.16683",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875",
-                    strokeLinecap: "round"
-                  }
-                ),
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M5.8335 8.16406H8.16683",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875",
-                    strokeLinecap: "round"
-                  }
-                )
-              ]
-            }
-          ),
-          "Company"
-        ] }) }),
-        z === "companies-base" && /* @__PURE__ */ se.jsx("th", { className: "table__th", children: /* @__PURE__ */ se.jsxs("div", { className: "table__flex", children: [
-          /* @__PURE__ */ se.jsxs(
-            "svg",
-            {
-              className: "min-w-14",
-              width: "14",
-              height: "14",
-              viewBox: "0 0 16 16",
-              fill: "none",
-              xmlns: "http://www.w3.org/2000/svg",
-              children: [
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M2 6.66927C2 4.15511 2 2.89803 2.78105 2.11699C3.5621 1.33594 4.81918 1.33594 7.33333 1.33594H8.66667C11.1808 1.33594 12.4379 1.33594 13.219 2.11699C14 2.89803 14 4.15511 14 6.66927V9.33594C14 11.8501 14 13.1072 13.219 13.8882C12.4379 14.6693 11.1808 14.6693 8.66667 14.6693H7.33333C4.81918 14.6693 3.5621 14.6693 2.78105 13.8882C2 13.1072 2 11.8501 2 9.33594V6.66927Z",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875"
-                  }
-                ),
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M5.33325 8H10.6666",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875",
-                    strokeLinecap: "round"
-                  }
-                ),
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M5.33325 5.33594H10.6666",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875",
-                    strokeLinecap: "round"
-                  }
-                ),
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M5.33325 10.6641H8.66659",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875",
-                    strokeLinecap: "round"
-                  }
-                )
-              ]
-            }
-          ),
-          "URL"
-        ] }) }),
-        z === "companies-base" && /* @__PURE__ */ se.jsx("th", { className: "table__th", children: /* @__PURE__ */ se.jsxs("div", { className: "table__flex", children: [
-          /* @__PURE__ */ se.jsxs(
-            "svg",
-            {
-              className: "min-w-14",
-              width: "14",
-              height: "14",
-              viewBox: "0 0 14 14",
-              fill: "none",
-              xmlns: "http://www.w3.org/2000/svg",
-              children: [
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M8.16663 3.5H5.83329C5.04237 3.5 4.39362 3.5 3.8553 3.53176C2.89632 3.58834 2.28775 3.74571 1.85004 4.18342C1.16663 4.86684 1.16663 5.96678 1.16663 8.16667C1.16663 10.3666 1.16663 11.4665 1.85004 12.1499C2.53346 12.8333 3.6334 12.8333 5.83329 12.8333H8.16663C10.3665 12.8333 11.4665 12.8333 12.1499 12.1499C12.8333 11.4665 12.8333 10.3666 12.8333 8.16667C12.8333 5.96678 12.8333 4.86684 12.1499 4.18342C11.7122 3.74571 11.1036 3.58834 10.1446 3.53176C9.6063 3.5 8.95755 3.5 8.16663 3.5Z",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875"
-                  }
-                ),
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M3.85547 3.53176C4.33581 3.51959 4.75956 3.18203 4.92301 2.73019C4.92804 2.71629 4.93319 2.70083 4.9435 2.6699L4.95847 2.625C4.98307 2.55117 4.99538 2.51425 5.00855 2.4815C5.17666 2.06332 5.57061 1.77938 6.02049 1.75213C6.05572 1.75 6.09464 1.75 6.17246 1.75H7.8278C7.90563 1.75 7.94454 1.75 7.97977 1.75213C8.42966 1.77938 8.8236 2.06332 8.99172 2.4815C9.00488 2.51425 9.01719 2.55117 9.0418 2.625L9.05677 2.6699C9.06706 2.70078 9.07223 2.7163 9.07726 2.73019C9.2407 3.18203 9.66445 3.51959 10.1448 3.53176",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875"
-                  }
-                ),
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M12.636 5.08594C10.8803 6.22717 10.0024 6.79778 9.07693 7.08532C7.72421 7.5056 6.2758 7.5056 4.92308 7.08532C3.99762 6.79778 3.11975 6.22717 1.36401 5.08594",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875",
-                    strokeLinecap: "round"
-                  }
-                ),
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M4.66663 6.41797V7.58464",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875",
-                    strokeLinecap: "round"
-                  }
-                ),
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M9.33337 6.41797V7.58464",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875",
-                    strokeLinecap: "round"
-                  }
-                )
-              ]
-            }
-          ),
-          "Employees"
-        ] }) }),
-        z === "people-base" && /* @__PURE__ */ se.jsx("th", { className: "table__th", children: /* @__PURE__ */ se.jsxs("div", { className: "table__flex", children: [
-          /* @__PURE__ */ se.jsxs(
-            "svg",
-            {
-              className: "min-w-14",
-              width: "14",
-              height: "14",
-              viewBox: "0 0 14 14",
-              fill: "none",
-              xmlns: "http://www.w3.org/2000/svg",
-              children: [
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M8.1665 3.5H5.83317C5.04224 3.5 4.3935 3.5 3.85517 3.53176C2.8962 3.58834 2.28763 3.74571 1.84992 4.18342C1.1665 4.86684 1.1665 5.96678 1.1665 8.16667C1.1665 10.3666 1.1665 11.4665 1.84992 12.1499C2.53334 12.8333 3.63328 12.8333 5.83317 12.8333H8.1665C10.3664 12.8333 11.4663 12.8333 12.1498 12.1499C12.8332 11.4665 12.8332 10.3666 12.8332 8.16667C12.8332 5.96678 12.8332 4.86684 12.1498 4.18342C11.712 3.74571 11.1035 3.58834 10.1445 3.53176C9.60618 3.5 8.95743 3.5 8.1665 3.5Z",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875"
-                  }
-                ),
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M3.85547 3.53176C4.33581 3.51959 4.75956 3.18203 4.92301 2.73019C4.92804 2.71629 4.93319 2.70083 4.9435 2.6699L4.95847 2.625C4.98307 2.55117 4.99538 2.51425 5.00855 2.4815C5.17666 2.06332 5.57061 1.77938 6.02049 1.75213C6.05572 1.75 6.09464 1.75 6.17246 1.75H7.8278C7.90563 1.75 7.94454 1.75 7.97977 1.75213C8.42966 1.77938 8.8236 2.06332 8.99172 2.4815C9.00488 2.51425 9.01719 2.55117 9.0418 2.625L9.05677 2.6699C9.06706 2.70078 9.07223 2.7163 9.07726 2.73019C9.2407 3.18203 9.66445 3.51959 10.1448 3.53176",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875"
-                  }
-                ),
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M12.6362 5.08594C10.8805 6.22717 10.0026 6.79778 9.07718 7.08532C7.72445 7.5056 6.27605 7.5056 4.92332 7.08532C3.99787 6.79778 3.12 6.22717 1.36426 5.08594",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875",
-                    strokeLinecap: "round"
-                  }
-                ),
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M4.6665 6.41406V7.58073",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875",
-                    strokeLinecap: "round"
-                  }
-                ),
-                /* @__PURE__ */ se.jsx(
-                  "path",
-                  {
-                    d: "M9.3335 6.41406V7.58073",
-                    stroke: "#0D2A4C",
-                    strokeWidth: "0.875",
-                    strokeLinecap: "round"
-                  }
-                )
-              ]
-            }
-          ),
-          "Job Title"
-        ] }) })
-      ] }) }),
-      /* @__PURE__ */ se.jsx("tbody", { children: B == null ? void 0 : B.results.map((We, Rt) => /* @__PURE__ */ se.jsxs(
-        "tr",
-        {
-          className: "table__tr",
-          children: [
-            z === "people-base" && /* @__PURE__ */ se.jsx("td", { className: "table__td", children: /* @__PURE__ */ se.jsx("div", { className: "table__flex capitalize", children: We.fullName || "N/A" }) }),
-            /* @__PURE__ */ se.jsx("td", { className: "table__td", children: /* @__PURE__ */ se.jsxs("div", { className: "table__flex capitalize", children: [
-              /* @__PURE__ */ se.jsx(
-                "div",
-                {
-                  className: "table__img-circle",
-                  style: {
-                    background: "linear-gradient(to right, lab(65.0361% -1.42065 -56.9802), lab(52.0183% 66.11 -78.2316))"
-                  },
-                  children: We.companyLogo && /* @__PURE__ */ se.jsx(
-                    "img",
+    /* @__PURE__ */ se.jsxs("div", { className: "overflow", children: [
+      /* @__PURE__ */ se.jsxs("table", { className: "table", children: [
+        /* @__PURE__ */ se.jsx("thead", { children: /* @__PURE__ */ se.jsxs("tr", { children: [
+          z === "people-base" && /* @__PURE__ */ se.jsx("th", { className: "table__th", children: /* @__PURE__ */ se.jsxs("div", { className: "table__flex", children: [
+            /* @__PURE__ */ se.jsxs(
+              "svg",
+              {
+                className: "min-w-14",
+                width: "14",
+                height: "14",
+                viewBox: "0 0 14 14",
+                fill: "none",
+                xmlns: "http://www.w3.org/2000/svg",
+                children: [
+                  /* @__PURE__ */ se.jsx(
+                    "circle",
                     {
-                      width: 16,
-                      height: 16,
-                      src: We.companyLogo,
-                      alt: We.companyName
+                      cx: "6.99984",
+                      cy: "3.4974",
+                      r: "2.33333",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875"
+                    }
+                  ),
+                  /* @__PURE__ */ se.jsx(
+                    "ellipse",
+                    {
+                      cx: "6.99984",
+                      cy: "9.91927",
+                      rx: "4.08333",
+                      ry: "2.33333",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875"
                     }
                   )
-                }
-              ),
-              /* @__PURE__ */ se.jsxs("div", { children: [
-                We.companyName || "N/A",
-                " ",
-                /* @__PURE__ */ se.jsx("div", { className: "table__line" })
-              ] })
-            ] }) }),
-            z === "companies-base" && /* @__PURE__ */ se.jsx("td", { className: "table__td", children: /* @__PURE__ */ se.jsx("div", { className: "table__flex", children: We.companyDomain || We.companyWebsite }) }),
-            z === "companies-base" && /* @__PURE__ */ se.jsx("td", { className: "table__td", children: /* @__PURE__ */ se.jsx("div", { className: "table__flex", children: We.employeesRange && /* @__PURE__ */ se.jsx("span", { className: "table__badge", children: We.employeesRange }) }) }),
-            z === "people-base" && /* @__PURE__ */ se.jsx("td", { className: "table__td", children: /* @__PURE__ */ se.jsx("div", { className: "table__flex capitalize", children: We.jobTitle }) })
-          ]
-        },
-        We.id || We.companyId || Rt
-      )) })
-    ] }) })
-  ] }) : /* @__PURE__ */ se.jsx("div", { className: "no-data", children: "No data available" }) });
+                ]
+              }
+            ),
+            "Full name"
+          ] }) }),
+          /* @__PURE__ */ se.jsx("th", { className: "table__th", children: /* @__PURE__ */ se.jsxs("div", { className: "table__flex", children: [
+            /* @__PURE__ */ se.jsxs(
+              "svg",
+              {
+                className: "min-w-14",
+                width: "14",
+                height: "14",
+                viewBox: "0 0 14 14",
+                fill: "none",
+                xmlns: "http://www.w3.org/2000/svg",
+                children: [
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M12.8332 12.8359L1.1665 12.8359",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875",
+                      strokeLinecap: "round"
+                    }
+                  ),
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M9.91683 12.8307V3.4974C9.91683 2.39745 9.91683 1.84748 9.57512 1.50577C9.23341 1.16406 8.68344 1.16406 7.5835 1.16406H6.41683C5.31689 1.16406 4.76691 1.16406 4.4252 1.50577C4.0835 1.84748 4.0835 2.39745 4.0835 3.4974V12.8307",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875"
+                    }
+                  ),
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M12.2502 12.8307V6.70573C12.2502 5.88646 12.2502 5.47682 12.0535 5.18256C11.9684 5.05518 11.859 4.9458 11.7317 4.86068C11.4374 4.66406 11.0278 4.66406 10.2085 4.66406",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875"
+                    }
+                  ),
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M1.75 12.8307V6.70573C1.75 5.88646 1.75 5.47682 1.94662 5.18256C2.03174 5.05518 2.14111 4.9458 2.2685 4.86068C2.56276 4.66406 2.9724 4.66406 3.79167 4.66406",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875"
+                    }
+                  ),
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M7 12.8359V11.0859",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875",
+                      strokeLinecap: "round"
+                    }
+                  ),
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M5.8335 2.91406H8.16683",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875",
+                      strokeLinecap: "round"
+                    }
+                  ),
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M5.8335 4.66406H8.16683",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875",
+                      strokeLinecap: "round"
+                    }
+                  ),
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M5.8335 6.41406H8.16683",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875",
+                      strokeLinecap: "round"
+                    }
+                  ),
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M5.8335 8.16406H8.16683",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875",
+                      strokeLinecap: "round"
+                    }
+                  )
+                ]
+              }
+            ),
+            "Company"
+          ] }) }),
+          z === "companies-base" && /* @__PURE__ */ se.jsx("th", { className: "table__th", children: /* @__PURE__ */ se.jsxs("div", { className: "table__flex", children: [
+            /* @__PURE__ */ se.jsxs(
+              "svg",
+              {
+                className: "min-w-14",
+                width: "14",
+                height: "14",
+                viewBox: "0 0 16 16",
+                fill: "none",
+                xmlns: "http://www.w3.org/2000/svg",
+                children: [
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M2 6.66927C2 4.15511 2 2.89803 2.78105 2.11699C3.5621 1.33594 4.81918 1.33594 7.33333 1.33594H8.66667C11.1808 1.33594 12.4379 1.33594 13.219 2.11699C14 2.89803 14 4.15511 14 6.66927V9.33594C14 11.8501 14 13.1072 13.219 13.8882C12.4379 14.6693 11.1808 14.6693 8.66667 14.6693H7.33333C4.81918 14.6693 3.5621 14.6693 2.78105 13.8882C2 13.1072 2 11.8501 2 9.33594V6.66927Z",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875"
+                    }
+                  ),
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M5.33325 8H10.6666",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875",
+                      strokeLinecap: "round"
+                    }
+                  ),
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M5.33325 5.33594H10.6666",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875",
+                      strokeLinecap: "round"
+                    }
+                  ),
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M5.33325 10.6641H8.66659",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875",
+                      strokeLinecap: "round"
+                    }
+                  )
+                ]
+              }
+            ),
+            "URL"
+          ] }) }),
+          z === "companies-base" && /* @__PURE__ */ se.jsx("th", { className: "table__th", children: /* @__PURE__ */ se.jsxs("div", { className: "table__flex", children: [
+            /* @__PURE__ */ se.jsxs(
+              "svg",
+              {
+                className: "min-w-14",
+                width: "14",
+                height: "14",
+                viewBox: "0 0 14 14",
+                fill: "none",
+                xmlns: "http://www.w3.org/2000/svg",
+                children: [
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M8.16663 3.5H5.83329C5.04237 3.5 4.39362 3.5 3.8553 3.53176C2.89632 3.58834 2.28775 3.74571 1.85004 4.18342C1.16663 4.86684 1.16663 5.96678 1.16663 8.16667C1.16663 10.3666 1.16663 11.4665 1.85004 12.1499C2.53346 12.8333 3.6334 12.8333 5.83329 12.8333H8.16663C10.3665 12.8333 11.4665 12.8333 12.1499 12.1499C12.8333 11.4665 12.8333 10.3666 12.8333 8.16667C12.8333 5.96678 12.8333 4.86684 12.1499 4.18342C11.7122 3.74571 11.1036 3.58834 10.1446 3.53176C9.6063 3.5 8.95755 3.5 8.16663 3.5Z",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875"
+                    }
+                  ),
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M3.85547 3.53176C4.33581 3.51959 4.75956 3.18203 4.92301 2.73019C4.92804 2.71629 4.93319 2.70083 4.9435 2.6699L4.95847 2.625C4.98307 2.55117 4.99538 2.51425 5.00855 2.4815C5.17666 2.06332 5.57061 1.77938 6.02049 1.75213C6.05572 1.75 6.09464 1.75 6.17246 1.75H7.8278C7.90563 1.75 7.94454 1.75 7.97977 1.75213C8.42966 1.77938 8.8236 2.06332 8.99172 2.4815C9.00488 2.51425 9.01719 2.55117 9.0418 2.625L9.05677 2.6699C9.06706 2.70078 9.07223 2.7163 9.07726 2.73019C9.2407 3.18203 9.66445 3.51959 10.1448 3.53176",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875"
+                    }
+                  ),
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M12.636 5.08594C10.8803 6.22717 10.0024 6.79778 9.07693 7.08532C7.72421 7.5056 6.2758 7.5056 4.92308 7.08532C3.99762 6.79778 3.11975 6.22717 1.36401 5.08594",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875",
+                      strokeLinecap: "round"
+                    }
+                  ),
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M4.66663 6.41797V7.58464",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875",
+                      strokeLinecap: "round"
+                    }
+                  ),
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M9.33337 6.41797V7.58464",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875",
+                      strokeLinecap: "round"
+                    }
+                  )
+                ]
+              }
+            ),
+            "Employees"
+          ] }) }),
+          z === "people-base" && /* @__PURE__ */ se.jsx("th", { className: "table__th", children: /* @__PURE__ */ se.jsxs("div", { className: "table__flex", children: [
+            /* @__PURE__ */ se.jsxs(
+              "svg",
+              {
+                className: "min-w-14",
+                width: "14",
+                height: "14",
+                viewBox: "0 0 14 14",
+                fill: "none",
+                xmlns: "http://www.w3.org/2000/svg",
+                children: [
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M8.1665 3.5H5.83317C5.04224 3.5 4.3935 3.5 3.85517 3.53176C2.8962 3.58834 2.28763 3.74571 1.84992 4.18342C1.1665 4.86684 1.1665 5.96678 1.1665 8.16667C1.1665 10.3666 1.1665 11.4665 1.84992 12.1499C2.53334 12.8333 3.63328 12.8333 5.83317 12.8333H8.1665C10.3664 12.8333 11.4663 12.8333 12.1498 12.1499C12.8332 11.4665 12.8332 10.3666 12.8332 8.16667C12.8332 5.96678 12.8332 4.86684 12.1498 4.18342C11.712 3.74571 11.1035 3.58834 10.1445 3.53176C9.60618 3.5 8.95743 3.5 8.1665 3.5Z",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875"
+                    }
+                  ),
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M3.85547 3.53176C4.33581 3.51959 4.75956 3.18203 4.92301 2.73019C4.92804 2.71629 4.93319 2.70083 4.9435 2.6699L4.95847 2.625C4.98307 2.55117 4.99538 2.51425 5.00855 2.4815C5.17666 2.06332 5.57061 1.77938 6.02049 1.75213C6.05572 1.75 6.09464 1.75 6.17246 1.75H7.8278C7.90563 1.75 7.94454 1.75 7.97977 1.75213C8.42966 1.77938 8.8236 2.06332 8.99172 2.4815C9.00488 2.51425 9.01719 2.55117 9.0418 2.625L9.05677 2.6699C9.06706 2.70078 9.07223 2.7163 9.07726 2.73019C9.2407 3.18203 9.66445 3.51959 10.1448 3.53176",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875"
+                    }
+                  ),
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M12.6362 5.08594C10.8805 6.22717 10.0026 6.79778 9.07718 7.08532C7.72445 7.5056 6.27605 7.5056 4.92332 7.08532C3.99787 6.79778 3.12 6.22717 1.36426 5.08594",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875",
+                      strokeLinecap: "round"
+                    }
+                  ),
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M4.6665 6.41406V7.58073",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875",
+                      strokeLinecap: "round"
+                    }
+                  ),
+                  /* @__PURE__ */ se.jsx(
+                    "path",
+                    {
+                      d: "M9.3335 6.41406V7.58073",
+                      stroke: "#0D2A4C",
+                      strokeWidth: "0.875",
+                      strokeLinecap: "round"
+                    }
+                  )
+                ]
+              }
+            ),
+            "Job Title"
+          ] }) })
+        ] }) }),
+        /* @__PURE__ */ se.jsx("tbody", { children: B == null ? void 0 : B.results.map((We, Rt) => /* @__PURE__ */ se.jsxs(
+          "tr",
+          {
+            className: "table__tr",
+            children: [
+              z === "people-base" && /* @__PURE__ */ se.jsx("td", { className: "table__td", children: /* @__PURE__ */ se.jsx("div", { className: "table__flex capitalize", children: We.fullName || "N/A" }) }),
+              /* @__PURE__ */ se.jsx("td", { className: "table__td", children: /* @__PURE__ */ se.jsxs("div", { className: "table__flex capitalize", children: [
+                /* @__PURE__ */ se.jsx(
+                  "div",
+                  {
+                    className: "table__img-circle",
+                    style: {
+                      background: "linear-gradient(to right, lab(65.0361% -1.42065 -56.9802), lab(52.0183% 66.11 -78.2316))"
+                    },
+                    children: We.companyLogo && /* @__PURE__ */ se.jsx(
+                      "img",
+                      {
+                        width: 16,
+                        height: 16,
+                        src: We.companyLogo,
+                        alt: We.companyName
+                      }
+                    )
+                  }
+                ),
+                /* @__PURE__ */ se.jsxs("div", { children: [
+                  We.companyName || "N/A",
+                  " ",
+                  /* @__PURE__ */ se.jsx("div", { className: "table__line" })
+                ] })
+              ] }) }),
+              z === "companies-base" && /* @__PURE__ */ se.jsx("td", { className: "table__td", children: /* @__PURE__ */ se.jsx("div", { className: "table__flex", children: We.companyDomain || We.companyWebsite }) }),
+              z === "companies-base" && /* @__PURE__ */ se.jsx("td", { className: "table__td", children: /* @__PURE__ */ se.jsx("div", { className: "table__flex", children: We.employeesRange && /* @__PURE__ */ se.jsx("span", { className: "table__badge", children: We.employeesRange }) }) }),
+              z === "people-base" && /* @__PURE__ */ se.jsx("td", { className: "table__td", children: /* @__PURE__ */ se.jsx("div", { className: "table__flex capitalize", children: We.jobTitle }) })
+            ]
+          },
+          We.id || We.companyId || Rt
+        )) })
+      ] }),
+      (B == null ? void 0 : B.results.length) === 0 && /* @__PURE__ */ se.jsx("div", { className: "no-data", children: "No results here - try the full search in the app" })
+    ] })
+  ] }) });
 }, sR = ({
   data: B = null
 }) => /* @__PURE__ */ se.jsx(lk, { data: B });
-console.log("WIDGET BUILD 04-12-2025 v1");
+console.log("WIDGET BUILD 04-12-2025 v2");
 const uk = {
   applied_filters: {
     geo: "Italy",
