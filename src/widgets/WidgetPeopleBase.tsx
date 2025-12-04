@@ -11,11 +11,11 @@ interface PeopleBaseProps {
 export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
   data = null,
 }) => {
-  const link = `https://next-dev.listkit.io/signup?plan=universalAccessFree&prompt=${data.title || ''}&tokenAI=${
-    data.token
-  }&filterAI=${encodeURIComponent(
-    JSON.stringify(data.applied_filters || '')
-  )}&pageAI=${data.page || ''}`;
+  const link = `https://next-dev.listkit.io/signup?plan=universalAccessFree&prompt=${
+    data.title || ""
+  }&tokenAI=${data.token}&filterAI=${encodeURIComponent(
+    JSON.stringify(data.applied_filters || "")
+  )}&pageAI=${data.page || ""}&templateId=${data.templateId || ""}`;
   /*const link = `http://app-dev.listkit.io/login?tokenAI=${
     data.token
   }&filterAI=${encodeURIComponent(
@@ -186,7 +186,51 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
                             strokeLinecap="round"
                           />
                         </svg>
-                        Domain
+                        URL
+                      </div>
+                    </th>
+                  )}
+                  {templateId === "companies-base" && (
+                    <th className="table__th">
+                      <div className="table__flex">
+                        <svg
+                          className="min-w-14"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 14 14"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M8.16663 3.5H5.83329C5.04237 3.5 4.39362 3.5 3.8553 3.53176C2.89632 3.58834 2.28775 3.74571 1.85004 4.18342C1.16663 4.86684 1.16663 5.96678 1.16663 8.16667C1.16663 10.3666 1.16663 11.4665 1.85004 12.1499C2.53346 12.8333 3.6334 12.8333 5.83329 12.8333H8.16663C10.3665 12.8333 11.4665 12.8333 12.1499 12.1499C12.8333 11.4665 12.8333 10.3666 12.8333 8.16667C12.8333 5.96678 12.8333 4.86684 12.1499 4.18342C11.7122 3.74571 11.1036 3.58834 10.1446 3.53176C9.6063 3.5 8.95755 3.5 8.16663 3.5Z"
+                            stroke="#0D2A4C"
+                            strokeWidth="0.875"
+                          />
+                          <path
+                            d="M3.85547 3.53176C4.33581 3.51959 4.75956 3.18203 4.92301 2.73019C4.92804 2.71629 4.93319 2.70083 4.9435 2.6699L4.95847 2.625C4.98307 2.55117 4.99538 2.51425 5.00855 2.4815C5.17666 2.06332 5.57061 1.77938 6.02049 1.75213C6.05572 1.75 6.09464 1.75 6.17246 1.75H7.8278C7.90563 1.75 7.94454 1.75 7.97977 1.75213C8.42966 1.77938 8.8236 2.06332 8.99172 2.4815C9.00488 2.51425 9.01719 2.55117 9.0418 2.625L9.05677 2.6699C9.06706 2.70078 9.07223 2.7163 9.07726 2.73019C9.2407 3.18203 9.66445 3.51959 10.1448 3.53176"
+                            stroke="#0D2A4C"
+                            strokeWidth="0.875"
+                          />
+                          <path
+                            d="M12.636 5.08594C10.8803 6.22717 10.0024 6.79778 9.07693 7.08532C7.72421 7.5056 6.2758 7.5056 4.92308 7.08532C3.99762 6.79778 3.11975 6.22717 1.36401 5.08594"
+                            stroke="#0D2A4C"
+                            strokeWidth="0.875"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M4.66663 6.41797V7.58464"
+                            stroke="#0D2A4C"
+                            strokeWidth="0.875"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M9.33337 6.41797V7.58464"
+                            stroke="#0D2A4C"
+                            strokeWidth="0.875"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                        Employees
                       </div>
                     </th>
                   )}
@@ -275,8 +319,19 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
                     </td>
                     {templateId === "companies-base" && (
                       <td className="table__td">
-                        <div className="table__flex capitalize">
-                          {item.companyDomain}
+                        <div className="table__flex">
+                          {item.companyDomain || item.companyWebsite}
+                        </div>
+                      </td>
+                    )}
+                    {templateId === "companies-base" && (
+                      <td className="table__td">
+                        <div className="table__flex">
+                          {item.employeesRange && (
+                            <span className="table__badge">
+                              {item.employeesRange}
+                            </span>
+                          )}
                         </div>
                       </td>
                     )}
