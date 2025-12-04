@@ -21557,7 +21557,7 @@ const lk = ({
 }, sR = ({
   data: B = null
 }) => /* @__PURE__ */ se.jsx(lk, { data: B });
-console.log("WIDGET BUILD 01-12-2025 34");
+console.log("WIDGET BUILD 04-12-2025 v1");
 const uk = {
   applied_filters: {
     geo: "Italy",
