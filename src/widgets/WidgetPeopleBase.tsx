@@ -35,18 +35,35 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
 
   console.log("widget people", templateId);
 
+  const checkValueTextUppercase = (value: string) => {
+    const m = ["cxo", "vp", "ceo", "cmo", "pm", "cto", "coo", "cro"];
+    if (value && value?.trim()) {
+      const str = value.trim().toLowerCase();
+      m.forEach((item) => {
+        if (str.includes(item)) {
+          const regex = new RegExp(`\\b${item}\\b`, "gi");
+          value = value.replace(regex, item.toUpperCase());
+        }
+      });
+    }
+    return value;
+  };
+
   return (
     <>
       <div className="container">
         <div className="title-block">
-          <span className="title-block__text">{data?.title || ""}</span>
+          <span className="title-block__text">{checkValueTextUppercase(data?.title || "")}</span>
           <a
             href={link}
             target="_blank"
             className="title-block__button"
             type="button"
           >
-            Open {data?.results?.length > 0 ? `${data?.result_count ? data?.result_count : ""} results` : ' web'}
+            Open{" "}
+            {data?.results?.length > 0
+              ? `${data?.result_count ? data?.result_count : ""} results`
+              : " web"}
           </a>
         </div>
 
@@ -337,7 +354,7 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
                   {templateId === "people-base" && (
                     <td className="table__td">
                       <div className="table__flex capitalize">
-                        {item.jobTitle}
+                        {checkValueTextUppercase(item.jobTitle)}
                       </div>
                     </td>
                   )}
@@ -345,7 +362,11 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
               ))}
             </tbody>
           </table>
-          {data?.results.length === 0 && <div className="no-data">No results here - try the full search in the app</div>}
+          {data?.results.length === 0 && (
+            <div className="no-data">
+              No results here - try the full search in the app
+            </div>
+          )}
         </div>
       </div>
     </>

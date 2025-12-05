@@ -1,10 +1,9 @@
 // src/main.tsx
-console.log("WIDGET BUILD 04-12-2025 v2");
+console.log("WIDGET BUILD 05-12-2025 v1");
 
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import type { WidgetId } from "./widgets/types";
 import { WidgetRenderer } from "./WidgetRenderer";
 
 const data = {
@@ -14,6 +13,7 @@ const data = {
     country: ["italy"],
     jobTitle: ["founder", "ceo"],
   },
+  title: "cto in la",
   result_count: 5,
   results: [
     {
