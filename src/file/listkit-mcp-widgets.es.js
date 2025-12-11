@@ -21192,7 +21192,7 @@ const lk = ({
   var yt;
   const K = `https://next-dev.listkit.io/signup?plan=universalAccessFree&prompt=${B.title || ""}&tokenAI=${B.token}&filterAI=${encodeURIComponent(
     JSON.stringify(B.applied_filters || "")
-  )}&pageAI=${B.page || ""}&templateId=${B.templateId || ""}`, z = B.templateId || "";
+  )}&pageAI=${B.page || ""}&templateId=${B.templateId || ""}&searchType=${B.search_type || ""}&titleAI=${B.title || ""}`, z = B.templateId || "";
   console.log("widget people", z);
   const jt = (Oe) => {
     const S = ["cxo", "vp", "ceo", "cmo", "pm", "cto", "coo", "cro"];
@@ -21574,7 +21574,7 @@ const lk = ({
 }, sR = ({
   data: B = null
 }) => /* @__PURE__ */ ce.jsx(lk, { data: B });
-console.log("WIDGET BUILD 05-12-2025 v1");
+console.log("WIDGET BUILD 11-12-2025 v1");
 const uk = {
   applied_filters: {
     geo: "Italy",

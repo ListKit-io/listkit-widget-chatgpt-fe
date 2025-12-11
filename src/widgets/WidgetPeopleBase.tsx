@@ -15,7 +15,9 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
     data.title || ""
   }&tokenAI=${data.token}&filterAI=${encodeURIComponent(
     JSON.stringify(data.applied_filters || "")
-  )}&pageAI=${data.page || ""}&templateId=${data.templateId || ""}`;
+  )}&pageAI=${data.page || ""}&templateId=${data.templateId || ""}&searchType=${data.search_type || ""}&titleAI=${
+    data.title || ""
+  }`;
   /*const link = `http://app-dev.listkit.io/login?tokenAI=${
     data.token
   }&filterAI=${encodeURIComponent(
