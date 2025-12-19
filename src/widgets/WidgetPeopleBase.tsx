@@ -67,7 +67,7 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
           >
             Open{" "}
             {data?.results?.length > 0
-              ? `${data?.result_count ? data?.result_count : ""} results`
+              ? `${data?.result_count ? data?.result_count?.toLocaleString("en-US") : ""} results`
               : " web"}
           </a>
         </div>
