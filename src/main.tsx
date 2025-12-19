@@ -1,5 +1,5 @@
 // src/main.tsx
-console.log("WIDGET BUILD 11-12-2025 v1");
+console.log("WIDGET BUILD 19-12-2025 v1");
 
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -71,7 +71,7 @@ const data = {
 
 let reactRoot: ReactDOM.Root | null = null;
 
-export function renderWidget(templateId = "", data: any = {}): void {
+export function renderWidget(templateId = "", data: any = {}, theme=''): void {
   const rootEl = document.getElementById("root");
 
   if (!rootEl) {
@@ -85,7 +85,7 @@ export function renderWidget(templateId = "", data: any = {}): void {
 
   reactRoot.render(
     <React.StrictMode>
-      <WidgetRenderer data={data} />
+      <WidgetRenderer data={data} theme={theme} />
     </React.StrictMode>
   );
 }

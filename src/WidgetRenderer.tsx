@@ -6,10 +6,11 @@ import { PeopleBaseWidget } from "./widgets/WidgetPeopleBase";
 interface WidgetRendererProps {
   templateId?: WidgetId | string;
   data: any;
+  theme?: string;
 }
 
 export const WidgetRenderer: React.FC<WidgetRendererProps> = ({
-  data = null,
+  data = null, theme = '',
 }) => {
   /*const Component = widgetRegistry[templateId];
   if (!Component) {
@@ -20,5 +21,5 @@ export const WidgetRenderer: React.FC<WidgetRendererProps> = ({
     );
   }*/
 
-  return <PeopleBaseWidget data={data} /> /*<Component data={data} />*/;
+  return <PeopleBaseWidget data={data} theme={theme} /> /*<Component data={data} />*/;
 };

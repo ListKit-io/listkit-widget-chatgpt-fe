@@ -6,10 +6,12 @@ import "./styles.css";
 interface PeopleBaseProps {
   templateId?: WidgetId | string;
   data?: any;
+  theme?: string;
 }
 
 export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
   data = null,
+  theme = '',
 }) => {
   const link = `https://next-dev.listkit.io/signup?plan=universalAccessFree&prompt=${
     data.title || ""
@@ -53,7 +55,7 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
 
   return (
     <>
-      <div className="container">
+      <div className={`container ${theme === 'dark' ? 'container--dark' : ''}`}>
         <div className="title-block">
           <span className="title-block__text">{checkValueTextUppercase(data?.title || "")}</span>
           <a
