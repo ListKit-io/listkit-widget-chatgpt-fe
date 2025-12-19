@@ -1,5 +1,5 @@
 // src/main.tsx
-console.log("WIDGET BUILD 19-12-2025 v1");
+console.log("WIDGET BUILD 19-12-2025 v2");
 
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -82,6 +82,8 @@ export function renderWidget(templateId = "", data: any = {}, theme=''): void {
   if (!reactRoot) {
     reactRoot = ReactDOM.createRoot(rootEl);
   }
+
+  console.log('theme in renderWidget', theme);
 
   reactRoot.render(
     <React.StrictMode>

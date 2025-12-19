@@ -12,6 +12,7 @@ interface WidgetRendererProps {
 export const WidgetRenderer: React.FC<WidgetRendererProps> = ({
   data = null, theme = '',
 }) => {
+  console.log('theme in widgetRenderer', theme);
   /*const Component = widgetRegistry[templateId];
   if (!Component) {
     return (

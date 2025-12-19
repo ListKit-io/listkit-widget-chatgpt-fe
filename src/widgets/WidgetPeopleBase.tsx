@@ -13,6 +13,7 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
   data = null,
   theme = '',
 }) => {
+  console.log('theme in PeopleBaseWidget', theme);
   const link = `https://next-dev.listkit.io/signup?plan=universalAccessFree&prompt=${
     data.title || ""
   }&tokenAI=${data.token}&filterAI=${encodeURIComponent(
