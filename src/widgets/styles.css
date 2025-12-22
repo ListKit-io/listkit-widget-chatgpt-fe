@@ -172,3 +172,9 @@ a {
 .capitalize {
   text-transform: capitalize;
 }
+
+@media (max-width: 500px) {
+  .container {
+    margin: 0 16px;
+  }
+}
