@@ -9,12 +9,16 @@ interface PeopleBaseProps {
   theme?: string;
 }
 
+const findDomain = (env: string = '') => {
+  return env?.toLowerCase() === 'dev' ? 'https://next-dev.listkit.io' : env?.toLowerCase() === 'staging' ? 'https://next-beta.listkit.io' : 'https://next.listkit.io';
+}
+
 export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
   data = null,
   theme = '',
 }) => {
   console.log('theme in PeopleBaseWidget', theme);
-  const link = `https://next-dev.listkit.io/signup?plan=universalAccessFree&prompt=${
+  const link = `${findDomain(data?.env)}/signup?plan=universalAccessFree&prompt=${
     data.title || ""
   }&tokenAI=${data.token}&filterAI=${encodeURIComponent(
     JSON.stringify(data.applied_filters || "")

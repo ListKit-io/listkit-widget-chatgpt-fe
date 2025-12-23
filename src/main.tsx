@@ -1,5 +1,5 @@
 // src/main.tsx
-console.log("WIDGET BUILD 22-12-2025 v1");
+console.log("WIDGET BUILD 23-12-2025 v1");
 
 import React from "react";
 import ReactDOM from "react-dom/client";
