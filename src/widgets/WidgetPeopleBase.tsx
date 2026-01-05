@@ -66,6 +66,26 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
     return value;
   };
 
+  const extractBackendErrorMessage = (raw: unknown): string => {
+    const text = typeof raw === "string" ? raw : String(raw ?? "");
+
+    let message = text;
+
+    try {
+      const parsed = JSON.parse(text);
+
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        message = String(parsed[0]);
+      } else if (typeof parsed === "string") {
+        message = parsed;
+      }
+    } catch {
+      message = "Request topic is not supported.";
+    }
+
+    return message;
+  };
+
   return (
     <>
       <div className={`container ${theme === "dark" ? "container--dark" : ""}`}>
@@ -92,7 +112,7 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
 
         {data?.error || data?.text ? (
           <div className="no-data error-text">
-            {data?.text || "Error: Request topic is not supported"}
+            {extractBackendErrorMessage(data?.text)}
           </div>
         ) : (
           <div className="overflow">
