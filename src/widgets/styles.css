@@ -73,6 +73,11 @@ a {
   border-top: 1px solid #414141;
 }
 
+.error-text {
+  color: #ff4d4f;
+  font-weight: 700;
+}
+
 .overflow {
   overflow: auto;
 }
