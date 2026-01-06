@@ -49,7 +49,6 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
   const link = `${auth0Url}&login_link=${encodeURIComponent(innerUrl)}`;*/
 
   const templateId = data.templateId || "";
-
   console.log("widget people", templateId);
 
   const checkValueTextUppercase = (value: string) => {
