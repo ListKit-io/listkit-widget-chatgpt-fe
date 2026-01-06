@@ -3,7 +3,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 
-export default defineConfig({
+/*export default defineConfig({
   plugins: [react(),
     cssInjectedByJsPlugin()],
   build: {
@@ -14,5 +14,12 @@ export default defineConfig({
       fileName: () => "listkit-mcp-widgets.es.js",
     },
     cssCodeSplit: false,
+  },
+});*/
+
+export default defineConfig({
+  plugins: [react()],
+  build: {
+    outDir: "dist",
   },
 });
