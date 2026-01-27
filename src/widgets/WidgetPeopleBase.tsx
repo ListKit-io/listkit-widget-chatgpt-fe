@@ -111,7 +111,7 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
 
         {data?.error || data?.text ? (
           <div className="no-data error-text">
-            {extractBackendErrorMessage(data?.text)}
+            {extractBackendErrorMessage(data?.error || data?.text)}
           </div>
         ) : (
           <div className="overflow">
