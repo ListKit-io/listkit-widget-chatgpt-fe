@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>MCP Widgets Dev</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -10,8 +11,86 @@
       rel="stylesheet"
     />
   </head>
-  <body style="margin: 0; padding: 0; background-color: #fff; font-family: 'DM Sans', sans-serif;">
+
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+      font-family: &quot;DM Sans&quot;, sans-serif;
+    "
+  >
     <div id="root"></div>
+
+    <script type="module">
+      console.log("step", 1);
+
+      let lastData = null;
+
+      function safeRender(reason = "manual") {
+        const data = lastData ?? window.openai?.toolOutput;
+        const theme = window.openai?.theme || "light";
+
+        if (window.renderWidget && data) {
+          console.log(`[WIDGET] Rendering via ${reason}`, data);
+          window.renderWidget("", data, theme);
+          return true;
+        }
+        return false;
+      }
+
+      const events = [
+        "openai:tool_output",
+        "openai:set_globals",
+        "openai:render",
+        "openai:update",
+      ];
+      events.forEach((event) => {
+        window.addEventListener(event, () => {
+          if (window.openai?.toolOutput) lastData = window.openai.toolOutput;
+          safeRender(event);
+        });
+      });
+
+      const attemptRender = () => {
+        if (!safeRender("initial_attempt")) {
+          let attempts = 0;
+          const interval = setInterval(() => {
+            attempts++;
+            if (safeRender("retry_" + attempts) || attempts > 20) {
+              clearInterval(interval);
+            }
+          }, 100);
+        }
+      };
+
+      if (document.readyState === "complete") {
+        attemptRender();
+      } else {
+        window.addEventListener("load", attemptRender);
+      }
+
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) safeRender("visibility_visible");
+      });
+
+      /*window.addEventListener("openai:tool_output", () => {
+        if (window.renderWidget) {
+          window.renderWidget(
+            "",
+            window.openai?.toolOutput,
+            window.openai?.theme,
+          );
+        }
+      });
+
+      window.onload = () => {
+        if (window.renderWidget && window.openai?.toolOutput) {
+          window.renderWidget("", window.openai.toolOutput);
+        }
+      };*/
+    </script>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -1,10 +1,41 @@
 // src/main.tsx
-console.log("WIDGET BUILD 05-01-2026 v1");
+console.log("WIDGET BUILD 05-02-2026 v111");
 
 import React from "react";
 import ReactDOM from "react-dom/client";
-
+import { App } from "@modelcontextprotocol/ext-apps"; 
 import { WidgetRenderer } from "./WidgetRenderer";
+
+const mcpApp = new App({ 
+  name: "people-widget", 
+  version: "1.0.0"
+});
+
+function getClaudeTheme(): 'light' | 'dark' {
+  const bgColor = window.getComputedStyle(document.body).backgroundColor;
+  if (bgColor.includes('rgb(2') || bgColor.includes('rgb(3')) {
+    return 'dark';
+  }
+  return 'light';
+}
+
+mcpApp.ontoolresult = (result) => {
+  const textItem = result?.content?.find(
+    (c): c is { type: "text"; text: string } => c.type === "text"
+  );
+
+  if (textItem?.text) {
+    try {
+      const parsedData = JSON.parse(textItem.text);
+      const currentTheme = getClaudeTheme(); 
+      renderWidget("", parsedData, currentTheme);
+    } catch (e) {
+      console.error("MCP JSON parse error", e);
+    }
+  }
+};
+
+mcpApp.connect();
 
 const data = {
   applied_filters: {
@@ -92,88 +123,8 @@ export function renderWidget(templateId = "", data: any = {}, theme=''): void {
   );
 }
 
-// Widgets dev-preview
-// This code runs only when you open index.html through npm run dev (Vite)
-if (
-  window.location.hostname === "localhost" &&
-  document.getElementById("root")
-) {
-  const root = ReactDOM.createRoot(
-    document.getElementById("root") as HTMLElement
-  );
+(window as any).renderWidget = renderWidget;
 
-  root.render(
-    <React.StrictMode>
-      <WidgetRenderer data={data} />
-      {/*<div style={{ padding: 16, display: "grid", gap: 32 }}>
-        <h2>Direct widgets</h2>
-
-          <WidgetRenderer
-            templateId="people-base"
-            data={{
-              title: "Poeple",
-              contacts: [
-                {
-                  id: "1",
-                  fullName: "Emma Rivers",
-                  companyName: "Mailchimp",
-                  jobTitle: "User Research Director",
-                },
-              ],
-            }}
-          />
-
-          <WidgetRenderer
-            templateId="companies-base"
-            data={{
-              title: "Companies",
-              contacts: [
-                {
-                  id: "1",
-                  companyName: "Mailchimp",
-                  fullName: "Emma Rivers",
-                  jobTitle: "User Research Director",
-                },
-              ],
-            }}
-          />
-
-          <WidgetRenderer
-            templateId="companies-b2b"
-            data={{
-              title: "B2B Companies",
-              contacts: [
-                {
-                  name: "photospire ltd",
-                  domain: "spirable.com",
-                  logo: "https://s3.amazonaws.com/media.mixrank.com/hero-img/b66926c24b2d211fcf3d33ff2d56b88c",
-                  companyId: null,
-                  companyName: "photospire ltd",
-                  companyDomain: "spirable.com",
-                  companyLogo: "https://s3.amazonaws.com/media.mixrank.com/hero-img/b66926c24b2d211fcf3d33ff2d56b88c"
-                },
-                {
-                  name: "yellow sub hydro ltd",
-                  domain: "yellowsubhydro.com",
-                  logo: "https://s3.amazonaws.com/media.mixrank.com/hero-img/6fdcb0dfc972f7e7ebd5c7c0efb92792",
-                  companyId: null,
-                  companyName: "yellow sub hydro ltd",
-                  companyDomain: "yellowsubhydro.com",
-                  companyLogo: "https://s3.amazonaws.com/media.mixrank.com/hero-img/6fdcb0dfc972f7e7ebd5c7c0efb92792"
-                },
-                {
-                  name: "simplifie",
-                  domain: "simplifie.com",
-                  logo: "https://s3.amazonaws.com/media.mixrank.com/hero-img/d64bba940277a5bc542bd0b0cd32f23e",
-                  companyId: null,
-                  companyName: "simplifie",
-                  companyDomain: "simplifie.com",
-                  companyLogo: "https://s3.amazonaws.com/media.mixrank.com/hero-img/d64bba940277a5bc542bd0b0cd32f23e"
-                },
-              ],
-            }}
-          />
-      </div>*/}
-    </React.StrictMode>
-  );
+if (window.location.hostname === "localhost" && document.getElementById("root")) {
+  renderWidget("", data, "light");
 }
