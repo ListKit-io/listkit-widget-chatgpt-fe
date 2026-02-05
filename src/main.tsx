@@ -3,31 +3,46 @@ console.log("WIDGET BUILD 05-02-2026 v111");
 
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { App } from "@modelcontextprotocol/ext-apps"; 
+import { App } from "@modelcontextprotocol/ext-apps";
 import { WidgetRenderer } from "./WidgetRenderer";
 
-const mcpApp = new App({ 
-  name: "people-widget", 
-  version: "1.0.0"
+const mcpApp = new App({
+  name: "people-widget",
+  version: "1.0.0",
 });
 
-function getClaudeTheme(): 'light' | 'dark' {
+function getClaudeTheme(): "light" | "dark" {
   const bgColor = window.getComputedStyle(document.body).backgroundColor;
-  if (bgColor.includes('rgb(2') || bgColor.includes('rgb(3')) {
-    return 'dark';
+
+  console.log(
+    window.getComputedStyle(document.body),
+    window.getComputedStyle(document.body).backgroundColor,
+  );
+
+  const rgb = bgColor.match(/\d+/g);
+
+  if (rgb && rgb.length >= 3) {
+    const r = parseInt(rgb[0]);
+    const g = parseInt(rgb[1]);
+    const b = parseInt(rgb[2]);
+
+    const brightness = (r + g + b) / 3;
+
+    return brightness < 128 ? "dark" : "light";
   }
-  return 'light';
+
+  return "light";
 }
 
 mcpApp.ontoolresult = (result) => {
   const textItem = result?.content?.find(
-    (c): c is { type: "text"; text: string } => c.type === "text"
+    (c): c is { type: "text"; text: string } => c.type === "text",
   );
 
   if (textItem?.text) {
     try {
       const parsedData = JSON.parse(textItem.text);
-      const currentTheme = getClaudeTheme(); 
+      const currentTheme = getClaudeTheme();
       renderWidget("", parsedData, currentTheme);
     } catch (e) {
       console.error("MCP JSON parse error", e);
@@ -102,7 +117,11 @@ const data = {
 
 let reactRoot: ReactDOM.Root | null = null;
 
-export function renderWidget(templateId = "", data: any = {}, theme=''): void {
+export function renderWidget(
+  templateId = "",
+  data: any = {},
+  theme = "",
+): void {
   const rootEl = document.getElementById("root");
 
   if (!rootEl) {
@@ -114,17 +133,20 @@ export function renderWidget(templateId = "", data: any = {}, theme=''): void {
     reactRoot = ReactDOM.createRoot(rootEl);
   }
 
-  console.log('theme in renderWidget', theme);
+  console.log("theme in renderWidget", theme);
 
   reactRoot.render(
     <React.StrictMode>
       <WidgetRenderer data={data} theme={theme} />
-    </React.StrictMode>
+    </React.StrictMode>,
   );
 }
 
 (window as any).renderWidget = renderWidget;
 
-if (window.location.hostname === "localhost" && document.getElementById("root")) {
+if (
+  window.location.hostname === "localhost" &&
+  document.getElementById("root")
+) {
   renderWidget("", data, "light");
 }
