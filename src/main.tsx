@@ -12,25 +12,14 @@ const mcpApp = new App({
 });
 
 function getClaudeTheme(): "light" | "dark" {
-  const bgColor = window.getComputedStyle(document.body).backgroundColor;
-
-  console.log(
-    window.getComputedStyle(document.body),
-    window.getComputedStyle(document.body).backgroundColor,
-  );
-
-  const rgb = bgColor.match(/\d+/g);
-
-  if (rgb && rgb.length >= 3) {
-    const r = parseInt(rgb[0]);
-    const g = parseInt(rgb[1]);
-    const b = parseInt(rgb[2]);
-
-    const brightness = (r + g + b) / 3;
-
-    return brightness < 128 ? "dark" : "light";
+  console.log("detecting theme", window.matchMedia);
+  console.dir("111", window.getComputedStyle(document.body));
+  if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    return "dark";
   }
-
   return "light";
 }
 
