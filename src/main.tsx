@@ -12,8 +12,7 @@ const mcpApp = new App({
 });
 
 function getClaudeTheme(): "light" | "dark" {
-  console.log("detecting theme", window.matchMedia);
-  console.dir("111", window.getComputedStyle(document.body));
+  console.dir("detecting theme", window.matchMedia);
   if (
     window.matchMedia &&
     window.matchMedia("(prefers-color-scheme: dark)").matches
