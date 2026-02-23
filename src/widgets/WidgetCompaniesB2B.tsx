@@ -27,8 +27,6 @@ export const CompaniesB2BWidget: React.FC<CompaniesB2BProps> = ({
   data = [],
   title = "B2B Companies",
 }) => {
-  console.log("[WIDGET CompaniesB2B] data =", data);
-
   return (
     <div
       style={{

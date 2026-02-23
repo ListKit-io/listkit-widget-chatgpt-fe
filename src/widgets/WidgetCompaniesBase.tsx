@@ -27,8 +27,6 @@ export const CompaniesBaseWidget: React.FC<CompanyBaseProps> = ({
   data = [],
   title = "Companies",
 }) => {
-
-  console.log("[WIDGET CompaniesBase] data =", data);
   
   return (
     <div

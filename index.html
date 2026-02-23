@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>MCP Widgets Dev</title>
+    <title>Universal MCP Widget</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,16 +13,34 @@
   </head>
 
   <body
-    style="
-      margin: 0;
-      padding: 0;
-      font-family: 'DM Sans', sans-serif;
-    "
+    style="margin: 0; padding: 0; font-family: &quot;DM Sans&quot;, sans-serif"
   >
     <div id="root"></div>
 
     <script type="module">
-      console.log("step", 1);
+      console.log("module fe initialized");
+      const checkAndRender = () => {
+        const data = window.openai?.toolOutput || window.lastMcpData;
+        const theme = window.openai?.theme || "light";
+
+        if (window.renderWidget && data) {
+          window.renderWidget("index_fallback", data, theme);
+          return true;
+        }
+        return false;
+      };
+
+      let attempts = 0;
+      const initInterval = setInterval(() => {
+        attempts++;
+        if (checkAndRender() || attempts > 20) {
+          clearInterval(initInterval);
+        }
+      }, 100);
+    </script>
+
+    <script type="module">
+      /*console.log("step", 1);
 
       let lastData = null;
 
@@ -71,23 +89,7 @@
 
       document.addEventListener("visibilitychange", () => {
         if (!document.hidden) safeRender("visibility_visible");
-      });
-
-      /*window.addEventListener("openai:tool_output", () => {
-        if (window.renderWidget) {
-          window.renderWidget(
-            "",
-            window.openai?.toolOutput,
-            window.openai?.theme,
-          );
-        }
-      });
-
-      window.onload = () => {
-        if (window.renderWidget && window.openai?.toolOutput) {
-          window.renderWidget("", window.openai.toolOutput);
-        }
-      };*/
+      });*/
     </script>
 
     <script type="module" src="/src/main.tsx"></script>

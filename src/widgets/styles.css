@@ -11,13 +11,28 @@ a {
   border-radius: 10px;
   border: 1px solid #e2e4e9;
   color: #0d2a4c;
-  background-color: #fff;
 }
 
 .container--dark {
   border: 1px solid #414141;
-  background-color: #212121;
   color: #ffffff;
+}
+
+.bg-dark {
+  background-color: #212121;
+}
+
+.bg-light {
+  background-color: #fff;
+}
+
+.blocked-link {
+  padding: 6px 16px;
+  border-bottom: 1px solid #e2e4e9;
+  white-space: normal;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .title-block {
@@ -30,6 +45,10 @@ a {
 }
 
 .container--dark .title-block {
+  border-bottom: 1px solid #414141;
+}
+
+.container--dark .blocked-link {
   border-bottom: 1px solid #414141;
 }
 
@@ -46,7 +65,9 @@ a {
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: #288dff;
-  box-shadow: 0 1px 2px 0 rgba(14, 18, 27, 0.24), 0 0 0 1px #288dff;
+  box-shadow:
+    0 1px 2px 0 rgba(14, 18, 27, 0.24),
+    0 0 0 1px #288dff;
   color: #ffffff;
   font-size: 14px;
   font-style: normal;
@@ -60,7 +81,9 @@ a {
 
 .title-block__button:hover {
   background: #0f75ff;
-  box-shadow: 0 4px 8px 0 rgba(14, 18, 27, 0.24), 0 0 0 1px #0f75ff;
+  box-shadow:
+    0 4px 8px 0 rgba(14, 18, 27, 0.24),
+    0 0 0 1px #0f75ff;
 }
 
 .no-data {
