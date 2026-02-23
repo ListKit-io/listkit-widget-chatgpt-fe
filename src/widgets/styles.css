@@ -27,7 +27,7 @@ a {
 }
 
 .blocked-link {
-  padding: 6px 16px;
+  padding: 16px;
   border-bottom: 1px solid #e2e4e9;
   white-space: normal;
   word-break: break-all;

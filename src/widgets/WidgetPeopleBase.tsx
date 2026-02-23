@@ -22,46 +22,53 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
   theme = "",
 }) => {
   console.log(data);
-  const link = `${findDomain(
-    data?.env,
-  )}/signup?plan=universalAccessFree&prompt=${data.title || ""}&tokenAI=${
-    data.token
-  }&filterAI=${encodeURIComponent(
-    JSON.stringify(
-      data.search_type === "vector" ? "" : data.applied_filters || "",
-    ),
-  )}&pageAI=${data.page || ""}&templateId=${data.templateId || ""}&searchType=${
-    data.search_type || ""
-  }&titleAI=${data.title || ""}`;
+
+  const link = useMemo(() => {
+    if (!data) return "";
+
+    const filters =
+      data.search_type === "vector" ? "" : data.applied_filters || "";
+
+    return (
+      `${findDomain(data?.env)}/signup?` +
+      `plan=universalAccessFree` +
+      `&prompt=${encodeURIComponent(data.title || "")}` +
+      `&tokenAI=${data.token}` +
+      `&filterAI=${encodeURIComponent(JSON.stringify(filters))}` +
+      `&pageAI=${data.page || ""}` +
+      `&templateId=${data.templateId || ""}` +
+      `&searchType=${data.search_type || ""}` +
+      `&titleAI=${encodeURIComponent(data.title || "")}`
+    );
+  }, [data]);
 
   const linkBase = useMemo(() => {
     return `${findDomain(data?.env)}/signup?plan=universalAccessFree`;
   }, [data?.env]);
-  /*const link = `http://app-dev.listkit.io/login?tokenAI=${
-    data.token
-  }&filterAI=${encodeURIComponent(
-    JSON.stringify(data.applied_filters)
-  )}&pageAI=${data.page}`;*/
-  /*const auth0Url = data?.login_link || "";
-  const innerUrl =
-    `http://app-dev.listkit.io/login?tokenAI=${encodeURIComponent(
-      data.token
-    )}` +
-    `&filterAI=${encodeURIComponent(JSON.stringify(data.applied_filters))}` +
-    `&pageAI=${encodeURIComponent(data.page)}`;
-
-  const link = `${auth0Url}&login_link=${encodeURIComponent(innerUrl)}`;*/
 
   const [showLink, setShowLink] = React.useState(false);
 
-  const handleOpenClick = async (e: React.MouseEvent) => {
+  const handleOpenClick = (e: React.MouseEvent) => {
     e.preventDefault();
+    if (!link) return;
 
-    const win = window.open(link, "_blank");
+    const win = window.open(link, "_blank", "noopener,noreferrer");
 
-    if (!win) {
-      setShowLink(true);
+    console.log("win", win);
+
+    if (win) {
+      setShowLink(false);
+      return;
     }
+
+    setTimeout(() => {
+      console.log(document.hasFocus());
+      if (document.hasFocus()) {
+        setShowLink(true);
+      } else {
+        setShowLink(false);
+      }
+    }, 500);
   };
 
   const templateId = data.templateId || "";
