@@ -1,5 +1,5 @@
 // src/widgets/WidgetPeopleBase.tsx
-import React from "react";
+import React, { useMemo } from "react";
 import type { PeopleBase, WidgetId } from "./types";
 import "./styles.css";
 
@@ -33,6 +33,10 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
   )}&pageAI=${data.page || ""}&templateId=${data.templateId || ""}&searchType=${
     data.search_type || ""
   }&titleAI=${data.title || ""}`;
+
+  const linkBase = useMemo(() => {
+    return `${findDomain(data?.env)}/signup?plan=universalAccessFree`;
+  }, [data?.env]);
   /*const link = `http://app-dev.listkit.io/login?tokenAI=${
     data.token
   }&filterAI=${encodeURIComponent(
@@ -126,11 +130,12 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
 
               {showLink && link && (
                 <div className="blocked-link">
-                  <span className="error-text">
-                    Claude blocked the link. Please copy it manually:
-                  </span>
+                  <strong>
+                    Popup has been blocked. Please use the link below and open
+                    it in a new tab:
+                  </strong>
                   <br />
-                  {link}
+                  {link?.length > 500 ? linkBase : link}
                 </div>
               )}
 
