@@ -1,4 +1,4 @@
-console.log("UNIVERSAL WIDGET BUILD 23-02-2026 v3");
+console.log("UNIVERSAL WIDGET BUILD 24-02-2026 v1");
 
 import React from "react";
 import ReactDOM from "react-dom/client";

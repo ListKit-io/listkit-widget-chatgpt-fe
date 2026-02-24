@@ -2,6 +2,7 @@
 import React, { useMemo } from "react";
 import type { PeopleBase, WidgetId } from "./types";
 import "./styles.css";
+import AnimationLoading from "../animation/AnimationLoading";
 
 interface PeopleBaseProps {
   templateId?: WidgetId | string;
@@ -455,7 +456,9 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
               )}
             </>
           ) : (
-            <div className="no-data">Loading data...</div>
+            <div className="animation-loading">
+              <AnimationLoading />
+            </div>
           )}
         </div>
       </div>
