@@ -24,6 +24,15 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
 }) => {
   console.log(data);
 
+  const codeRef = React.useRef<HTMLElement | null>(null);
+
+  const [toast, setToast] = React.useState<string | null>(null);
+
+  const showToast = (message: string) => {
+    setToast(message);
+    setTimeout(() => setToast(null), 2500);
+  };
+
   const link = useMemo(() => {
     if (!data) return "";
 
@@ -42,10 +51,6 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
       `&titleAI=${encodeURIComponent(data.title || "")}`
     );
   }, [data]);
-
-  const linkBase = useMemo(() => {
-    return `${findDomain(data?.env)}/signup?plan=universalAccessFree`;
-  }, [data?.env]);
 
   const [showLink, setShowLink] = React.useState(false);
 
@@ -110,7 +115,7 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
 
   return (
     <>
-      <div className={`${theme === "dark" ? "bg-dark" : "bg-light"}`}>
+      <div className={`relative min-h-200 ${theme === "dark" ? "bg-dark" : "bg-light"}`}>
         <div
           className={`container ${theme === "dark" ? "container--dark" : ""}`}
         >
@@ -135,17 +140,6 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
                     : " web"}
                 </button>
               </div>
-
-              {showLink && link && (
-                <div className="blocked-link">
-                  <strong>
-                    Popup has been blocked. Please use the link below and open
-                    it in a new tab:
-                  </strong>
-                  <br />
-                  {link?.length > 500 ? linkBase : link}
-                </div>
-              )}
 
               {data?.error || data?.text ? (
                 <div className="no-data error-text">
@@ -461,6 +455,142 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
             </div>
           )}
         </div>
+
+        {
+          showLink && link && (
+            <div
+              className="modal-overlay"
+              style={{
+                background: "rgba(0,0,0,0.4)",
+                backdropFilter: "blur(3px)",
+              }}
+              onClick={() => setShowLink(false)}
+            >
+              <div
+                className="modal-container"
+                style={{
+                  background: theme === "dark" ? "#2d2d2d" : "#ffffff",
+                  color: theme === "dark" ? "#e5e5e5" : "#1a1a1a",
+                  borderRadius: "12px",
+                  boxShadow: "0 8px 32px rgba(0,0,0,0.2)",
+                  maxWidth: "540px",
+                  maxHeight: "calc(100vh - 60px)",
+                }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="modal-header" style={{ gap: "10px" }}>
+                  <div className="box-button-fl">
+                    <button
+                      style={{
+                        background: "#288dff",
+                        color: "#fff",
+                        border: "none",
+                        borderRadius: "8px",
+                        padding: "10px 16px",
+                        fontSize: "14px",
+                        fontWeight: "600",
+                        cursor: "pointer",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "8px",
+                      }}
+                      onClick={() => {
+                        navigator.clipboard.writeText(link);
+                        showToast(
+                          "Press Ctrl+C and paste it into a new browser tab",
+                        );
+
+                        if (codeRef.current) {
+                          const range = document.createRange();
+                          range.selectNodeContents(codeRef.current);
+                          const selection = window.getSelection();
+                          selection?.removeAllRanges();
+                          selection?.addRange(range);
+                        }
+                      }}
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <rect x="9" y="9" width="13" height="13" rx="2" />
+                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                      </svg>
+                      Select link
+                    </button>
+
+                    {toast && (
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "-10px",
+                          left: "100%",
+                          marginLeft: "10px",
+                          width: "150px",
+                          background: theme === "dark" ? "#2d2d2d" : "#ffffff",
+                          color: theme === "dark" ? "#e5e5e5" : "#1a1a1a",
+                          padding: "10px",
+                          borderRadius: "6px",
+                          fontSize: "12px",
+                          textAlign: "center",
+                          zIndex: 10,
+                          boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+                          animation: "fadeIn 0.3s",
+                        }}
+                      >
+                        {toast}
+                      </div>
+                    )}
+                  </div>
+
+                  <button
+                    onClick={() => setShowLink(false)}
+                    style={{
+                      marginLeft: "auto",
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      color: theme === "dark" ? "#e5e5e5" : "#1a1a1a",
+                      fontSize: "24px",
+                      opacity: 0.7,
+                    }}
+                  >
+                    &times;
+                  </button>
+                </div>
+
+                <div className="modal-body">
+                  <div
+                    className="code-box"
+                    style={{
+                      background: theme === "dark" ? "#404040" : "#f4f4f5",
+                      borderRadius: "8px",
+                      padding: "12px",
+                    }}
+                  >
+                    <code
+                      ref={codeRef}
+                      className="code"
+                      style={{
+                        wordBreak: "break-all",
+                        userSelect: "all",
+                        fontSize: "12px",
+                        display: "block",
+                        fontFamily: "monospace",
+                      }}
+                    >
+                      {link}
+                    </code>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        }
       </div>
     </>
   );
