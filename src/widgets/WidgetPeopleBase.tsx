@@ -18,10 +18,7 @@ const findDomain = (env: string = "") => {
       : "https://next.listkit.io";
 };
 
-export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
-  data = null,
-  theme = "",
-}) => {
+export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({ data = null, theme = "" }) => {
   console.log(data);
 
   const codeRef = React.useRef<HTMLElement | null>(null);
@@ -36,8 +33,7 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
   const link = useMemo(() => {
     if (!data) return "";
 
-    const filters =
-      data.search_type === "vector" ? "" : data.applied_filters || "";
+    const filters = data.search_type === "vector" ? "" : data.applied_filters || "";
 
     return (
       `${findDomain(data?.env)}/signup?` +
@@ -113,38 +109,30 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
     return message;
   };
 
+  const truncateText = (text: string, limit = 20) => {
+    const words = text.split(" ");
+    if (words.length > limit) {
+      return words.slice(0, limit).join(" ") + "...";
+    }
+    return text;
+  };
+
   return (
     <>
       <div className={`relative min-h-200 ${theme === "dark" ? "bg-dark" : "bg-light"}`}>
-        <div
-          className={`container ${theme === "dark" ? "container--dark" : ""}`}
-        >
+        <div className={`container ${theme === "dark" ? "container--dark" : ""}`}>
           {data && Object.keys(data).length > 0 ? (
             <>
               <div className="title-block">
-                <span className="title-block__text">
-                  {checkValueTextUppercase(data?.title || "")}
-                </span>
-                <button
-                  onClick={handleOpenClick}
-                  type="button"
-                  className="title-block__button"
-                >
+                <span className="title-block__text">{truncateText(checkValueTextUppercase(data?.title || ""))}</span>
+                <button onClick={handleOpenClick} type="button" className="title-block__button">
                   Open{" "}
-                  {data?.results?.length > 0
-                    ? `${
-                        data?.result_count
-                          ? data?.result_count?.toLocaleString("en-US")
-                          : ""
-                      } results`
-                    : " web"}
+                  {data?.results?.length > 0 ? `${data?.result_count ? data?.result_count?.toLocaleString("en-US") : ""} results` : " web"}
                 </button>
               </div>
 
               {data?.error || data?.text ? (
-                <div className="no-data error-text">
-                  {extractBackendErrorMessage(data?.error || data?.text)}
-                </div>
+                <div className="no-data error-text">{extractBackendErrorMessage(data?.error || data?.text)}</div>
               ) : (
                 <div className="overflow">
                   <table className="table">
@@ -161,21 +149,8 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                               >
-                                <circle
-                                  cx="6.99984"
-                                  cy="3.4974"
-                                  r="2.33333"
-                                  stroke="#0D2A4C"
-                                  strokeWidth="0.875"
-                                />
-                                <ellipse
-                                  cx="6.99984"
-                                  cy="9.91927"
-                                  rx="4.08333"
-                                  ry="2.33333"
-                                  stroke="#0D2A4C"
-                                  strokeWidth="0.875"
-                                />
+                                <circle cx="6.99984" cy="3.4974" r="2.33333" stroke="#0D2A4C" strokeWidth="0.875" />
+                                <ellipse cx="6.99984" cy="9.91927" rx="4.08333" ry="2.33333" stroke="#0D2A4C" strokeWidth="0.875" />
                               </svg>
                               Full name
                             </div>
@@ -191,12 +166,7 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
                               fill="none"
                               xmlns="http://www.w3.org/2000/svg"
                             >
-                              <path
-                                d="M12.8332 12.8359L1.1665 12.8359"
-                                stroke="#0D2A4C"
-                                strokeWidth="0.875"
-                                strokeLinecap="round"
-                              />
+                              <path d="M12.8332 12.8359L1.1665 12.8359" stroke="#0D2A4C" strokeWidth="0.875" strokeLinecap="round" />
                               <path
                                 d="M9.91683 12.8307V3.4974C9.91683 2.39745 9.91683 1.84748 9.57512 1.50577C9.23341 1.16406 8.68344 1.16406 7.5835 1.16406H6.41683C5.31689 1.16406 4.76691 1.16406 4.4252 1.50577C4.0835 1.84748 4.0835 2.39745 4.0835 3.4974V12.8307"
                                 stroke="#0D2A4C"
@@ -212,36 +182,11 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
                                 stroke="#0D2A4C"
                                 strokeWidth="0.875"
                               />
-                              <path
-                                d="M7 12.8359V11.0859"
-                                stroke="#0D2A4C"
-                                strokeWidth="0.875"
-                                strokeLinecap="round"
-                              />
-                              <path
-                                d="M5.8335 2.91406H8.16683"
-                                stroke="#0D2A4C"
-                                strokeWidth="0.875"
-                                strokeLinecap="round"
-                              />
-                              <path
-                                d="M5.8335 4.66406H8.16683"
-                                stroke="#0D2A4C"
-                                strokeWidth="0.875"
-                                strokeLinecap="round"
-                              />
-                              <path
-                                d="M5.8335 6.41406H8.16683"
-                                stroke="#0D2A4C"
-                                strokeWidth="0.875"
-                                strokeLinecap="round"
-                              />
-                              <path
-                                d="M5.8335 8.16406H8.16683"
-                                stroke="#0D2A4C"
-                                strokeWidth="0.875"
-                                strokeLinecap="round"
-                              />
+                              <path d="M7 12.8359V11.0859" stroke="#0D2A4C" strokeWidth="0.875" strokeLinecap="round" />
+                              <path d="M5.8335 2.91406H8.16683" stroke="#0D2A4C" strokeWidth="0.875" strokeLinecap="round" />
+                              <path d="M5.8335 4.66406H8.16683" stroke="#0D2A4C" strokeWidth="0.875" strokeLinecap="round" />
+                              <path d="M5.8335 6.41406H8.16683" stroke="#0D2A4C" strokeWidth="0.875" strokeLinecap="round" />
+                              <path d="M5.8335 8.16406H8.16683" stroke="#0D2A4C" strokeWidth="0.875" strokeLinecap="round" />
                             </svg>
                             Company
                           </div>
@@ -262,24 +207,9 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
                                   stroke="#0D2A4C"
                                   strokeWidth="0.875"
                                 />
-                                <path
-                                  d="M5.33325 8H10.6666"
-                                  stroke="#0D2A4C"
-                                  strokeWidth="0.875"
-                                  strokeLinecap="round"
-                                />
-                                <path
-                                  d="M5.33325 5.33594H10.6666"
-                                  stroke="#0D2A4C"
-                                  strokeWidth="0.875"
-                                  strokeLinecap="round"
-                                />
-                                <path
-                                  d="M5.33325 10.6641H8.66659"
-                                  stroke="#0D2A4C"
-                                  strokeWidth="0.875"
-                                  strokeLinecap="round"
-                                />
+                                <path d="M5.33325 8H10.6666" stroke="#0D2A4C" strokeWidth="0.875" strokeLinecap="round" />
+                                <path d="M5.33325 5.33594H10.6666" stroke="#0D2A4C" strokeWidth="0.875" strokeLinecap="round" />
+                                <path d="M5.33325 10.6641H8.66659" stroke="#0D2A4C" strokeWidth="0.875" strokeLinecap="round" />
                               </svg>
                               URL
                             </div>
@@ -312,18 +242,8 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
                                   strokeWidth="0.875"
                                   strokeLinecap="round"
                                 />
-                                <path
-                                  d="M4.66663 6.41797V7.58464"
-                                  stroke="#0D2A4C"
-                                  strokeWidth="0.875"
-                                  strokeLinecap="round"
-                                />
-                                <path
-                                  d="M9.33337 6.41797V7.58464"
-                                  stroke="#0D2A4C"
-                                  strokeWidth="0.875"
-                                  strokeLinecap="round"
-                                />
+                                <path d="M4.66663 6.41797V7.58464" stroke="#0D2A4C" strokeWidth="0.875" strokeLinecap="round" />
+                                <path d="M9.33337 6.41797V7.58464" stroke="#0D2A4C" strokeWidth="0.875" strokeLinecap="round" />
                               </svg>
                               Employees
                             </div>
@@ -356,18 +276,8 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
                                   strokeWidth="0.875"
                                   strokeLinecap="round"
                                 />
-                                <path
-                                  d="M4.6665 6.41406V7.58073"
-                                  stroke="#0D2A4C"
-                                  strokeWidth="0.875"
-                                  strokeLinecap="round"
-                                />
-                                <path
-                                  d="M9.3335 6.41406V7.58073"
-                                  stroke="#0D2A4C"
-                                  strokeWidth="0.875"
-                                  strokeLinecap="round"
-                                />
+                                <path d="M4.6665 6.41406V7.58073" stroke="#0D2A4C" strokeWidth="0.875" strokeLinecap="round" />
+                                <path d="M9.3335 6.41406V7.58073" stroke="#0D2A4C" strokeWidth="0.875" strokeLinecap="round" />
                               </svg>
                               Job Title
                             </div>
@@ -378,15 +288,10 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
 
                     <tbody>
                       {data?.results?.map((item: any, idx: number) => (
-                        <tr
-                          className="table__tr"
-                          key={item.id || item.companyId || idx}
-                        >
+                        <tr className="table__tr" key={item.id || item.companyId || idx}>
                           {templateId === "people-base" && (
                             <td className="table__td">
-                              <div className="table__flex capitalize">
-                                {item.fullName || "N/A"}
-                              </div>
+                              <div className="table__flex capitalize">{item.fullName || "N/A"}</div>
                             </td>
                           )}
                           <td className="table__td">
@@ -397,55 +302,35 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
                                   background: `linear-gradient(to right, lab(65.0361% -1.42065 -56.9802), lab(52.0183% 66.11 -78.2316))`,
                                 }}
                               >
-                                {item.companyLogo && (
-                                  <img
-                                    width={16}
-                                    height={16}
-                                    src={item.companyLogo}
-                                    alt={item.companyName}
-                                  />
-                                )}
+                                {item.companyLogo && <img width={16} height={16} src={item.companyLogo} alt={item.companyName} />}
                               </div>
                               <div>
-                                {item.companyName || "N/A"}{" "}
-                                <div className="table__line"></div>
+                                {item.companyName || "N/A"} <div className="table__line"></div>
                               </div>
                             </div>
                           </td>
                           {templateId === "companies-base" && (
                             <td className="table__td">
-                              <div className="table__flex">
-                                {item.companyDomain || item.companyWebsite}
-                              </div>
+                              <div className="table__flex">{item.companyDomain || item.companyWebsite}</div>
                             </td>
                           )}
                           {templateId === "companies-base" && (
                             <td className="table__td">
                               <div className="table__flex">
-                                {item.employeesRange && (
-                                  <span className="table__badge">
-                                    {item.employeesRange}
-                                  </span>
-                                )}
+                                {item.employeesRange && <span className="table__badge">{item.employeesRange}</span>}
                               </div>
                             </td>
                           )}
                           {templateId === "people-base" && (
                             <td className="table__td">
-                              <div className="table__flex capitalize">
-                                {checkValueTextUppercase(item.jobTitle)}
-                              </div>
+                              <div className="table__flex capitalize">{checkValueTextUppercase(item.jobTitle)}</div>
                             </td>
                           )}
                         </tr>
                       ))}
                     </tbody>
                   </table>
-                  {data?.results.length === 0 && (
-                    <div className="no-data">
-                      No results here - try the full search in the app
-                    </div>
-                  )}
+                  {data?.results.length === 0 && <div className="no-data">No results here - try the full search in the app</div>}
                 </div>
               )}
             </>
@@ -456,141 +341,130 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({
           )}
         </div>
 
-        {
-          showLink && link && (
+        {showLink && link && (
+          <div
+            className="modal-overlay"
+            style={{
+              background: "rgba(0,0,0,0.4)",
+              backdropFilter: "blur(3px)",
+            }}
+            onClick={() => setShowLink(false)}
+          >
             <div
-              className="modal-overlay"
+              className="modal-container"
               style={{
-                background: "rgba(0,0,0,0.4)",
-                backdropFilter: "blur(3px)",
+                background: theme === "dark" ? "#2d2d2d" : "#ffffff",
+                color: theme === "dark" ? "#e5e5e5" : "#1a1a1a",
+                borderRadius: "12px",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.2)",
+                maxWidth: "540px",
+                maxHeight: "calc(100vh - 60px)",
               }}
-              onClick={() => setShowLink(false)}
+              onClick={(e) => e.stopPropagation()}
             >
-              <div
-                className="modal-container"
-                style={{
-                  background: theme === "dark" ? "#2d2d2d" : "#ffffff",
-                  color: theme === "dark" ? "#e5e5e5" : "#1a1a1a",
-                  borderRadius: "12px",
-                  boxShadow: "0 8px 32px rgba(0,0,0,0.2)",
-                  maxWidth: "540px",
-                  maxHeight: "calc(100vh - 60px)",
-                }}
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className="modal-header" style={{ gap: "10px" }}>
-                  <div className="box-button-fl">
-                    <button
-                      style={{
-                        background: "#288dff",
-                        color: "#fff",
-                        border: "none",
-                        borderRadius: "8px",
-                        padding: "10px 16px",
-                        fontSize: "14px",
-                        fontWeight: "600",
-                        cursor: "pointer",
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "8px",
-                      }}
-                      onClick={() => {
-                        navigator.clipboard.writeText(link);
-                        showToast(
-                          "Press Ctrl+C and paste it into a new browser tab",
-                        );
-
-                        if (codeRef.current) {
-                          const range = document.createRange();
-                          range.selectNodeContents(codeRef.current);
-                          const selection = window.getSelection();
-                          selection?.removeAllRanges();
-                          selection?.addRange(range);
-                        }
-                      }}
-                    >
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <rect x="9" y="9" width="13" height="13" rx="2" />
-                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-                      </svg>
-                      Select link
-                    </button>
-
-                    {toast && (
-                      <div
-                        style={{
-                          position: "absolute",
-                          top: "-10px",
-                          left: "100%",
-                          marginLeft: "10px",
-                          width: "150px",
-                          background: theme === "dark" ? "#2d2d2d" : "#ffffff",
-                          color: theme === "dark" ? "#e5e5e5" : "#1a1a1a",
-                          padding: "10px",
-                          borderRadius: "6px",
-                          fontSize: "12px",
-                          textAlign: "center",
-                          zIndex: 10,
-                          boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
-                          animation: "fadeIn 0.3s",
-                        }}
-                      >
-                        {toast}
-                      </div>
-                    )}
-                  </div>
-
+              <div className="modal-header" style={{ gap: "10px" }}>
+                <div className="box-button-fl">
                   <button
-                    onClick={() => setShowLink(false)}
                     style={{
-                      marginLeft: "auto",
-                      background: "none",
+                      background: "#288dff",
+                      color: "#fff",
                       border: "none",
+                      borderRadius: "8px",
+                      padding: "10px 16px",
+                      fontSize: "14px",
+                      fontWeight: "600",
                       cursor: "pointer",
-                      color: theme === "dark" ? "#e5e5e5" : "#1a1a1a",
-                      fontSize: "24px",
-                      opacity: 0.7,
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "8px",
+                    }}
+                    onClick={() => {
+                      navigator.clipboard.writeText(link);
+                      showToast("Press Ctrl+C and paste it into a new browser tab");
+
+                      if (codeRef.current) {
+                        const range = document.createRange();
+                        range.selectNodeContents(codeRef.current);
+                        const selection = window.getSelection();
+                        selection?.removeAllRanges();
+                        selection?.addRange(range);
+                      }
                     }}
                   >
-                    &times;
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <rect x="9" y="9" width="13" height="13" rx="2" />
+                      <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                    </svg>
+                    Select link
                   </button>
+
+                  {toast && (
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: "-10px",
+                        left: "100%",
+                        marginLeft: "10px",
+                        width: "150px",
+                        background: theme === "dark" ? "#2d2d2d" : "#ffffff",
+                        color: theme === "dark" ? "#e5e5e5" : "#1a1a1a",
+                        padding: "10px",
+                        borderRadius: "6px",
+                        fontSize: "12px",
+                        textAlign: "center",
+                        zIndex: 10,
+                        boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+                        animation: "fadeIn 0.3s",
+                      }}
+                    >
+                      {toast}
+                    </div>
+                  )}
                 </div>
 
-                <div className="modal-body">
-                  <div
-                    className="code-box"
+                <button
+                  onClick={() => setShowLink(false)}
+                  style={{
+                    marginLeft: "auto",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    color: theme === "dark" ? "#e5e5e5" : "#1a1a1a",
+                    fontSize: "24px",
+                    opacity: 0.7,
+                  }}
+                >
+                  &times;
+                </button>
+              </div>
+
+              <div className="modal-body">
+                <div
+                  className="code-box"
+                  style={{
+                    background: theme === "dark" ? "#404040" : "#f4f4f5",
+                    borderRadius: "8px",
+                    padding: "12px",
+                  }}
+                >
+                  <code
+                    ref={codeRef}
+                    className="code"
                     style={{
-                      background: theme === "dark" ? "#404040" : "#f4f4f5",
-                      borderRadius: "8px",
-                      padding: "12px",
+                      wordBreak: "break-all",
+                      userSelect: "all",
+                      fontSize: "12px",
+                      display: "block",
+                      fontFamily: "monospace",
                     }}
                   >
-                    <code
-                      ref={codeRef}
-                      className="code"
-                      style={{
-                        wordBreak: "break-all",
-                        userSelect: "all",
-                        fontSize: "12px",
-                        display: "block",
-                        fontFamily: "monospace",
-                      }}
-                    >
-                      {link}
-                    </code>
-                  </div>
+                    {link}
+                  </code>
                 </div>
               </div>
             </div>
-          )
-        }
+          </div>
+        )}
       </div>
     </>
   );
