@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>MCP Widgets Dev</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Universal MCP Widget</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -10,8 +11,87 @@
       rel="stylesheet"
     />
   </head>
-  <body style="margin: 0; padding: 0; background-color: #fff; font-family: 'DM Sans', sans-serif;">
+
+  <body
+    style="margin: 0; padding: 0; font-family: &quot;DM Sans&quot;, sans-serif"
+  >
     <div id="root"></div>
+
+    <script type="module">
+      console.log("module fe initialized");
+      const checkAndRender = () => {
+        const data = window.openai?.toolOutput || window.lastMcpData;
+        const theme = window.openai?.theme || "light";
+
+        if (window.renderWidget && data) {
+          window.renderWidget("index_fallback", data, theme);
+          return true;
+        }
+        return false;
+      };
+
+      let attempts = 0;
+      const initInterval = setInterval(() => {
+        attempts++;
+        if (checkAndRender() || attempts > 20) {
+          clearInterval(initInterval);
+        }
+      }, 100);
+    </script>
+
+    <script type="module">
+      /*console.log("step", 1);
+
+      let lastData = null;
+
+      function safeRender(reason = "manual") {
+        const data = lastData ?? window.openai?.toolOutput;
+        const theme = window.openai?.theme || "light";
+
+        if (window.renderWidget && data) {
+          console.log(`[WIDGET] Rendering via ${reason}`, data);
+          window.renderWidget("", data, theme);
+          return true;
+        }
+        return false;
+      }
+
+      const events = [
+        "openai:tool_output",
+        "openai:set_globals",
+        "openai:render",
+        "openai:update",
+      ];
+      events.forEach((event) => {
+        window.addEventListener(event, () => {
+          if (window.openai?.toolOutput) lastData = window.openai.toolOutput;
+          safeRender(event);
+        });
+      });
+
+      const attemptRender = () => {
+        if (!safeRender("initial_attempt")) {
+          let attempts = 0;
+          const interval = setInterval(() => {
+            attempts++;
+            if (safeRender("retry_" + attempts) || attempts > 20) {
+              clearInterval(interval);
+            }
+          }, 100);
+        }
+      };
+
+      if (document.readyState === "complete") {
+        attemptRender();
+      } else {
+        window.addEventListener("load", attemptRender);
+      }
+
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) safeRender("visibility_visible");
+      });*/
+    </script>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
