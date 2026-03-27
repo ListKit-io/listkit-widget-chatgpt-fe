@@ -12,15 +12,5 @@ interface WidgetRendererProps {
 export const WidgetRenderer: React.FC<WidgetRendererProps> = ({
   data = null, theme = '',
 }) => {
-  console.log('theme in widgetRenderer', theme);
-  /*const Component = widgetRegistry[templateId];
-  if (!Component) {
-    return (
-      <div style={{ padding: 16, color: "red" }}>
-        Unknown widget: {templateId}
-      </div>
-    );
-  }*/
-
   return <PeopleBaseWidget data={data} theme={theme} /> /*<Component data={data} />*/;
 };
