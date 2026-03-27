@@ -33,18 +33,17 @@ export const PeopleBaseWidget: React.FC<PeopleBaseProps> = ({ data = null, theme
   const link = useMemo(() => {
     if (!data) return "";
 
-    const filters = data.search_type === "vector" ? "" : data.applied_filters || "";
+    const hasFilters = data?.applied_filters && Object.keys(data?.applied_filters).length > 0;
+    const filters = data?.search_type === "vector" || !hasFilters ? null : data?.applied_filters;
 
     return (
       `${findDomain(data?.env)}/signup?` +
       `plan=universalAccessFree` +
-      `&prompt=${encodeURIComponent(data.title || "")}` +
-      `&tokenAI=${data.token}` +
-      `&filterAI=${encodeURIComponent(JSON.stringify(filters))}` +
-      `&pageAI=${data.page || ""}` +
-      `&templateId=${data.templateId || ""}` +
-      `&searchType=${data.search_type || ""}` +
-      `&titleAI=${encodeURIComponent(data.title || "")}`
+      `${data?.title ? `&titleAI=${encodeURIComponent(data.title)}` : ""}` +
+      `${filters ? `&filterAI=${encodeURIComponent(JSON.stringify(filters))}` : ""}` +
+      `${data?.page ? `&pageAI=${data.page}` : ""}` +
+      `${data?.templateId ? `&templateId=${data.templateId}` : ""}` +
+      `${data?.search_type ? `&searchType=${data.search_type}` : ""}`
     );
   }, [data]);
 
